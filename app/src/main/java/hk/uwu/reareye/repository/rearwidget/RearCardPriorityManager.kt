@@ -51,7 +51,7 @@ object RearCardPriorityManager {
                 ?: RearCardOrderSetting(automatic = true)).copy(position = index)
         }.toMap()
 
-    /** Assign consecutive values from 500 upwards, starting at the bottom of the visible list. */
+    /** Assign consecutive values from 600 upwards, starting at the bottom of the visible list. */
     fun assignAutomaticPriorities(
         cards: List<RearCardConfig>,
         settings: Map<String, RearCardOrderSetting>
@@ -61,7 +61,7 @@ object RearCardPriorityManager {
             .filter { settings[it.id]?.automatic == false }
             .map { it.priority }
             .toSet()
-        var nextPriority = 500L
+        var nextPriority = 600L
         for (index in cards.indices.reversed()) {
             val card = cards[index]
             if (settings[card.id]?.automatic != false) {

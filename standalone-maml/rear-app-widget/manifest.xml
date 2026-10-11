@@ -1,0 +1,2523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Screen frameRate="60" rearWidgetPicker="true" screenWidth="1080" version="2">
+    <!-- Five identity-keyed ring rows, <=15 physical-viewport cells + two separate neighbours per row.
+         All mutable picker variables are nonpersistent; restored rw_selected/provider/instance are untouched.
+         Binder request epochs own cancellation; callbacks also guard package/offset/count/provider groups. -->
+    <VariableBinders>
+        <RearDisplayBinder name="display" />
+        <RearAppWidgetAppsBinder name="apps" category="1" limit="5" offsetExp="max(0,#appIndex-2)"
+            queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptApps" />
+            </Trigger>
+        </RearAppWidgetAppsBinder>
+        <RearAppWidgetBinder name="r0v" category="1" limitExp="#r0vLimit" offsetExp="#r0vOffset"
+            packageExp="@r0Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r0vPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr0v" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r0l" category="1" limitExp="#r0lLimit" offsetExp="#r0lOffset"
+            packageExp="@r0Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r0lPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr0l" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r0n" category="1" limitExp="#r0nLimit" offsetExp="#r0nOffset"
+            packageExp="@r0Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r0nPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr0n" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r1v" category="1" limitExp="#r1vLimit" offsetExp="#r1vOffset"
+            packageExp="@r1Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r1vPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr1v" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r1l" category="1" limitExp="#r1lLimit" offsetExp="#r1lOffset"
+            packageExp="@r1Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r1lPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr1l" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r1n" category="1" limitExp="#r1nLimit" offsetExp="#r1nOffset"
+            packageExp="@r1Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r1nPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr1n" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r2v" category="1" limitExp="#r2vLimit" offsetExp="#r2vOffset"
+            packageExp="@r2Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r2vPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr2v" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r2l" category="1" limitExp="#r2lLimit" offsetExp="#r2lOffset"
+            packageExp="@r2Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r2lPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr2l" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r2n" category="1" limitExp="#r2nLimit" offsetExp="#r2nOffset"
+            packageExp="@r2Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r2nPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr2n" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r3v" category="1" limitExp="#r3vLimit" offsetExp="#r3vOffset"
+            packageExp="@r3Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r3vPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr3v" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r3l" category="1" limitExp="#r3lLimit" offsetExp="#r3lOffset"
+            packageExp="@r3Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r3lPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr3l" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r3n" category="1" limitExp="#r3nLimit" offsetExp="#r3nOffset"
+            packageExp="@r3Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r3nPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr3n" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r4v" category="1" limitExp="#r4vLimit" offsetExp="#r4vOffset"
+            packageExp="@r4Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r4vPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr4v" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r4l" category="1" limitExp="#r4lLimit" offsetExp="#r4lOffset"
+            packageExp="@r4Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r4lPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr4l" />
+            </Trigger>
+        </RearAppWidgetBinder>
+        <RearAppWidgetBinder name="r4n" category="1" limitExp="#r4nLimit" offsetExp="#r4nOffset"
+            packageExp="@r4Package" previewHeightExp="#previewSize" previewWidthExp="#previewSize"
+            priorityExp="#r4nPriority" queryAtStart="false">
+            <Trigger>
+                <FunctionCommand target="acceptr4n" />
+            </Trigger>
+        </RearAppWidgetBinder>
+    </VariableBinders>
+    <ExternalCommands>
+        <Trigger action="init">
+            <FunctionCommand target="initializePicker" />
+        </Trigger>
+    </ExternalCommands>
+    <Var name="displayReady"
+        expression="gt(#display.count,0)*eq(#display.loading,0)*eqs(@display.error,'')*gt(#display.width,0)*gt(#display.height,0)*ge(#display.safeLeft,0)*ge(#display.safeTop,0)*ge(#display.safeRight,0)*ge(#display.safeBottom,0)*gt(#display.width-#display.safeLeft-#display.safeRight,48)*gt(#display.height-#display.safeTop-#display.safeBottom,48)" />
+    <Var name="scale" expression="1080/max(1,#display.width)" />
+    <Var name="padding" expression="6*#scale" />
+    <Var name="safeX" expression="#display.safeLeft*#scale+#padding" />
+    <Var name="safeY" expression="#display.safeTop*#scale+#padding" />
+    <Var name="safeW"
+        expression="max(0,(#display.width-#display.safeLeft-#display.safeRight)*#scale-2*#padding)" />
+    <Var name="safeH"
+        expression="max(0,(#display.height-#display.safeTop-#display.safeBottom)*#scale-2*#padding)" />
+    <Var name="rowH" expression="#safeH*0.36" />
+    <Var name="centerTop" expression="(#safeH-#rowH)/2" />
+    <Var name="fontSize" expression="min(#safeW*0.075,#rowH*0.19)" />
+    <Var name="previewBoxW" expression="#safeW*0.78" />
+    <Var name="previewBoxH" expression="#rowH*0.62" />
+    <Var name="previewCenterY" expression="#rowH*0.55" />
+    <Var name="pickerVisible" expression="#rw_ready*not(#rw_selected)*#displayReady" />
+    <Var name="stride" expression="max(#safeW*0.55,90)" />
+    <Var name="anchor" expression="#safeX+#safeW/2" />
+    <!-- Symmetric cell stride gives both drag directions the same rebase geometry.
+         Budget covers three possibly distinct snapshots: Binder publication, theme cache, native Image.
+         Dimension depends only on geometry, never priority/motion; promotion retains the same cache key. -->
+    <Var name="columnBudget" expression="min(17,ceil((1080+#previewBoxW)/#stride)+2)" />
+    <Var name="previewSize" expression="min(256,floor(sqrt(8388608/(5*#columnBudget*4*3))))" />
+    <Var name="r0vQSize" />
+    <Var name="r0lQSize" />
+    <Var name="r0nQSize" />
+    <Var name="r1vQSize" />
+    <Var name="r1lQSize" />
+    <Var name="r1nQSize" />
+    <Var name="r2vQSize" />
+    <Var name="r2lQSize" />
+    <Var name="r2nQSize" />
+    <Var name="r3vQSize" />
+    <Var name="r3lQSize" />
+    <Var name="r3nQSize" />
+    <Var name="r4vQSize" />
+    <Var name="r4lQSize" />
+    <Var name="r4nQSize" />
+    <Var name="appIndex" />
+    <Var name="started" const="true" expression="0" />
+    <Var name="appsReady" />
+    <Var name="totalApps" />
+    <Var name="direction" />
+    <Var name="dragging" />
+    <Var name="settling" />
+    <Var name="dx" />
+    <Var name="dy" />
+    <Var name="downX" />
+    <Var name="downY" />
+    <Var name="downTime" />
+    <Var name="lastTime" />
+    <Var name="lastX" />
+    <Var name="lastY" />
+    <Var name="velocityX" />
+    <Var name="velocityY" />
+    <Var name="snapFromX" />
+    <Var name="snapFromY" />
+    <Var name="snapToX" />
+    <Var name="snapToY" />
+    <Var name="settleStart" />
+    <Var name="settleDuration" />
+    <Var name="settleProgress" />
+    <Var name="tapEligible" />
+    <Var name="firstTapValid" />
+    <Var name="centerDown" />
+    <Var name="doubleArmed" />
+    <Var name="firstTapIndex" />
+    <Var name="firstTapApp" />
+    <Var name="requestSequence" const="true" expression="0" />
+    <Var name="initialized" const="true" expression="0" />
+    <Var name="motionEpoch" />
+    <Var name="step" />
+    <Var name="remaining" />
+    <Var name="centerSlot" />
+    <!-- Numeric arithmetic must complete before native evaluateStr recursively concatenates names. -->
+    <Var name="rowSlot" />
+    <Var name="memorySlot" />
+    <Var name="currentWidgetIndex" />
+    <Var name="currentWidgetCount" />
+    <Var name="currentReady" />
+    <Var name="firstTapPackage" type="string" />
+    <Var name="firstTapProvider" type="string" />
+    <Var name="currentPackage" type="string" />
+    <Var name="currentProvider" type="string" />
+    <Var name="currentName" type="string" />
+    <Var name="slotPrefix" type="string" />
+    <!-- Verified native const=true: update on every init, no doTick overwrite; commands may assign later. -->
+    <Var name="rw_user_request" const="true" expression="''" type="string" />
+    <Var name="r0AppIndex" />
+    <Var name="r0WidgetIndex" />
+    <Var name="r0WidgetNumber" expression="#r0WidgetIndex+1" />
+    <Var name="r0WidgetCount" />
+    <Var name="r0Valid" />
+    <Var name="r0Package" type="string" />
+    <Var name="r0Name" type="string" />
+    <Var name="r0vOffset" />
+    <Var name="r0vLimit" />
+    <Var name="r0vPriority" />
+    <Var name="r0vQOffset" />
+    <Var name="r0vQLimit" />
+    <Var name="r0vQPriority" />
+    <Var name="r0vCacheOffset" />
+    <Var name="r0vCacheCount" />
+    <Var name="r0vReady" />
+    <Var name="r0vQPackage" type="string" />
+    <Var name="r0vCachePackage" type="string" />
+    <Var name="r0vBitmap" type="object" />
+    <Var name="r0vProviders" type="object" />
+    <Var name="r0vNames" type="object" />
+    <Var name="r0lOffset" />
+    <Var name="r0lLimit" />
+    <Var name="r0lPriority" />
+    <Var name="r0lQOffset" />
+    <Var name="r0lQLimit" />
+    <Var name="r0lQPriority" />
+    <Var name="r0lCacheOffset" />
+    <Var name="r0lCacheCount" />
+    <Var name="r0lReady" />
+    <Var name="r0lQPackage" type="string" />
+    <Var name="r0lCachePackage" type="string" />
+    <Var name="r0lBitmap" type="object" />
+    <Var name="r0lProviders" type="object" />
+    <Var name="r0lNames" type="object" />
+    <Var name="r0nOffset" />
+    <Var name="r0nLimit" />
+    <Var name="r0nPriority" />
+    <Var name="r0nQOffset" />
+    <Var name="r0nQLimit" />
+    <Var name="r0nQPriority" />
+    <Var name="r0nCacheOffset" />
+    <Var name="r0nCacheCount" />
+    <Var name="r0nReady" />
+    <Var name="r0nQPackage" type="string" />
+    <Var name="r0nCachePackage" type="string" />
+    <Var name="r0nBitmap" type="object" />
+    <Var name="r0nProviders" type="object" />
+    <Var name="r0nNames" type="object" />
+    <Var name="r1AppIndex" />
+    <Var name="r1WidgetIndex" />
+    <Var name="r1WidgetNumber" expression="#r1WidgetIndex+1" />
+    <Var name="r1WidgetCount" />
+    <Var name="r1Valid" />
+    <Var name="r1Package" type="string" />
+    <Var name="r1Name" type="string" />
+    <Var name="r1vOffset" />
+    <Var name="r1vLimit" />
+    <Var name="r1vPriority" />
+    <Var name="r1vQOffset" />
+    <Var name="r1vQLimit" />
+    <Var name="r1vQPriority" />
+    <Var name="r1vCacheOffset" />
+    <Var name="r1vCacheCount" />
+    <Var name="r1vReady" />
+    <Var name="r1vQPackage" type="string" />
+    <Var name="r1vCachePackage" type="string" />
+    <Var name="r1vBitmap" type="object" />
+    <Var name="r1vProviders" type="object" />
+    <Var name="r1vNames" type="object" />
+    <Var name="r1lOffset" />
+    <Var name="r1lLimit" />
+    <Var name="r1lPriority" />
+    <Var name="r1lQOffset" />
+    <Var name="r1lQLimit" />
+    <Var name="r1lQPriority" />
+    <Var name="r1lCacheOffset" />
+    <Var name="r1lCacheCount" />
+    <Var name="r1lReady" />
+    <Var name="r1lQPackage" type="string" />
+    <Var name="r1lCachePackage" type="string" />
+    <Var name="r1lBitmap" type="object" />
+    <Var name="r1lProviders" type="object" />
+    <Var name="r1lNames" type="object" />
+    <Var name="r1nOffset" />
+    <Var name="r1nLimit" />
+    <Var name="r1nPriority" />
+    <Var name="r1nQOffset" />
+    <Var name="r1nQLimit" />
+    <Var name="r1nQPriority" />
+    <Var name="r1nCacheOffset" />
+    <Var name="r1nCacheCount" />
+    <Var name="r1nReady" />
+    <Var name="r1nQPackage" type="string" />
+    <Var name="r1nCachePackage" type="string" />
+    <Var name="r1nBitmap" type="object" />
+    <Var name="r1nProviders" type="object" />
+    <Var name="r1nNames" type="object" />
+    <Var name="r2AppIndex" />
+    <Var name="r2WidgetIndex" />
+    <Var name="r2WidgetNumber" expression="#r2WidgetIndex+1" />
+    <Var name="r2WidgetCount" />
+    <Var name="r2Valid" />
+    <Var name="r2Package" type="string" />
+    <Var name="r2Name" type="string" />
+    <Var name="r2vOffset" />
+    <Var name="r2vLimit" />
+    <Var name="r2vPriority" />
+    <Var name="r2vQOffset" />
+    <Var name="r2vQLimit" />
+    <Var name="r2vQPriority" />
+    <Var name="r2vCacheOffset" />
+    <Var name="r2vCacheCount" />
+    <Var name="r2vReady" />
+    <Var name="r2vQPackage" type="string" />
+    <Var name="r2vCachePackage" type="string" />
+    <Var name="r2vBitmap" type="object" />
+    <Var name="r2vProviders" type="object" />
+    <Var name="r2vNames" type="object" />
+    <Var name="r2lOffset" />
+    <Var name="r2lLimit" />
+    <Var name="r2lPriority" />
+    <Var name="r2lQOffset" />
+    <Var name="r2lQLimit" />
+    <Var name="r2lQPriority" />
+    <Var name="r2lCacheOffset" />
+    <Var name="r2lCacheCount" />
+    <Var name="r2lReady" />
+    <Var name="r2lQPackage" type="string" />
+    <Var name="r2lCachePackage" type="string" />
+    <Var name="r2lBitmap" type="object" />
+    <Var name="r2lProviders" type="object" />
+    <Var name="r2lNames" type="object" />
+    <Var name="r2nOffset" />
+    <Var name="r2nLimit" />
+    <Var name="r2nPriority" />
+    <Var name="r2nQOffset" />
+    <Var name="r2nQLimit" />
+    <Var name="r2nQPriority" />
+    <Var name="r2nCacheOffset" />
+    <Var name="r2nCacheCount" />
+    <Var name="r2nReady" />
+    <Var name="r2nQPackage" type="string" />
+    <Var name="r2nCachePackage" type="string" />
+    <Var name="r2nBitmap" type="object" />
+    <Var name="r2nProviders" type="object" />
+    <Var name="r2nNames" type="object" />
+    <Var name="r3AppIndex" />
+    <Var name="r3WidgetIndex" />
+    <Var name="r3WidgetNumber" expression="#r3WidgetIndex+1" />
+    <Var name="r3WidgetCount" />
+    <Var name="r3Valid" />
+    <Var name="r3Package" type="string" />
+    <Var name="r3Name" type="string" />
+    <Var name="r3vOffset" />
+    <Var name="r3vLimit" />
+    <Var name="r3vPriority" />
+    <Var name="r3vQOffset" />
+    <Var name="r3vQLimit" />
+    <Var name="r3vQPriority" />
+    <Var name="r3vCacheOffset" />
+    <Var name="r3vCacheCount" />
+    <Var name="r3vReady" />
+    <Var name="r3vQPackage" type="string" />
+    <Var name="r3vCachePackage" type="string" />
+    <Var name="r3vBitmap" type="object" />
+    <Var name="r3vProviders" type="object" />
+    <Var name="r3vNames" type="object" />
+    <Var name="r3lOffset" />
+    <Var name="r3lLimit" />
+    <Var name="r3lPriority" />
+    <Var name="r3lQOffset" />
+    <Var name="r3lQLimit" />
+    <Var name="r3lQPriority" />
+    <Var name="r3lCacheOffset" />
+    <Var name="r3lCacheCount" />
+    <Var name="r3lReady" />
+    <Var name="r3lQPackage" type="string" />
+    <Var name="r3lCachePackage" type="string" />
+    <Var name="r3lBitmap" type="object" />
+    <Var name="r3lProviders" type="object" />
+    <Var name="r3lNames" type="object" />
+    <Var name="r3nOffset" />
+    <Var name="r3nLimit" />
+    <Var name="r3nPriority" />
+    <Var name="r3nQOffset" />
+    <Var name="r3nQLimit" />
+    <Var name="r3nQPriority" />
+    <Var name="r3nCacheOffset" />
+    <Var name="r3nCacheCount" />
+    <Var name="r3nReady" />
+    <Var name="r3nQPackage" type="string" />
+    <Var name="r3nCachePackage" type="string" />
+    <Var name="r3nBitmap" type="object" />
+    <Var name="r3nProviders" type="object" />
+    <Var name="r3nNames" type="object" />
+    <Var name="r4AppIndex" />
+    <Var name="r4WidgetIndex" />
+    <Var name="r4WidgetNumber" expression="#r4WidgetIndex+1" />
+    <Var name="r4WidgetCount" />
+    <Var name="r4Valid" />
+    <Var name="r4Package" type="string" />
+    <Var name="r4Name" type="string" />
+    <Var name="r4vOffset" />
+    <Var name="r4vLimit" />
+    <Var name="r4vPriority" />
+    <Var name="r4vQOffset" />
+    <Var name="r4vQLimit" />
+    <Var name="r4vQPriority" />
+    <Var name="r4vCacheOffset" />
+    <Var name="r4vCacheCount" />
+    <Var name="r4vReady" />
+    <Var name="r4vQPackage" type="string" />
+    <Var name="r4vCachePackage" type="string" />
+    <Var name="r4vBitmap" type="object" />
+    <Var name="r4vProviders" type="object" />
+    <Var name="r4vNames" type="object" />
+    <Var name="r4lOffset" />
+    <Var name="r4lLimit" />
+    <Var name="r4lPriority" />
+    <Var name="r4lQOffset" />
+    <Var name="r4lQLimit" />
+    <Var name="r4lQPriority" />
+    <Var name="r4lCacheOffset" />
+    <Var name="r4lCacheCount" />
+    <Var name="r4lReady" />
+    <Var name="r4lQPackage" type="string" />
+    <Var name="r4lCachePackage" type="string" />
+    <Var name="r4lBitmap" type="object" />
+    <Var name="r4lProviders" type="object" />
+    <Var name="r4lNames" type="object" />
+    <Var name="r4nOffset" />
+    <Var name="r4nLimit" />
+    <Var name="r4nPriority" />
+    <Var name="r4nQOffset" />
+    <Var name="r4nQLimit" />
+    <Var name="r4nQPriority" />
+    <Var name="r4nCacheOffset" />
+    <Var name="r4nCacheCount" />
+    <Var name="r4nReady" />
+    <Var name="r4nQPackage" type="string" />
+    <Var name="r4nCachePackage" type="string" />
+    <Var name="r4nBitmap" type="object" />
+    <Var name="r4nProviders" type="object" />
+    <Var name="r4nNames" type="object" />
+    <Var name="mem0Package" type="string" />
+    <Var name="mem0Index" />
+    <Var name="mem1Package" type="string" />
+    <Var name="mem1Index" />
+    <Var name="mem2Package" type="string" />
+    <Var name="mem2Index" />
+    <Var name="mem3Package" type="string" />
+    <Var name="mem3Index" />
+    <Var name="mem4Package" type="string" />
+    <Var name="mem4Index" />
+    <Var name="mem5Package" type="string" />
+    <Var name="mem5Index" />
+    <Var name="mem6Package" type="string" />
+    <Var name="mem6Index" />
+    <Var name="mem7Package" type="string" />
+    <Var name="mem7Index" />
+    <Var name="mem8Package" type="string" />
+    <Var name="mem8Index" />
+    <Var name="mem9Package" type="string" />
+    <Var name="mem9Index" />
+    <Var name="mem10Package" type="string" />
+    <Var name="mem10Index" />
+    <Var name="mem11Package" type="string" />
+    <Var name="mem11Index" />
+    <Var name="mem12Package" type="string" />
+    <Var name="mem12Index" />
+    <Var name="mem13Package" type="string" />
+    <Var name="mem13Index" />
+    <Var name="mem14Package" type="string" />
+    <Var name="mem14Index" />
+    <Var name="mem15Package" type="string" />
+    <Var name="mem15Index" />
+    <Var name="mem16Package" type="string" />
+    <Var name="mem16Index" />
+    <Var name="mem17Package" type="string" />
+    <Var name="mem17Index" />
+    <Var name="mem18Package" type="string" />
+    <Var name="mem18Index" />
+    <Var name="mem19Package" type="string" />
+    <Var name="mem19Index" />
+    <Var name="mem20Package" type="string" />
+    <Var name="mem20Index" />
+    <Var name="mem21Package" type="string" />
+    <Var name="mem21Index" />
+    <Var name="mem22Package" type="string" />
+    <Var name="mem22Index" />
+    <Var name="mem23Package" type="string" />
+    <Var name="mem23Index" />
+    <Var name="mem24Package" type="string" />
+    <Var name="mem24Index" />
+    <Var name="mem25Package" type="string" />
+    <Var name="mem25Index" />
+    <Var name="mem26Package" type="string" />
+    <Var name="mem26Index" />
+    <Var name="mem27Package" type="string" />
+    <Var name="mem27Index" />
+    <Var name="mem28Package" type="string" />
+    <Var name="mem28Index" />
+    <Var name="mem29Package" type="string" />
+    <Var name="mem29Index" />
+    <Var name="mem30Package" type="string" />
+    <Var name="mem30Index" />
+    <Var name="mem31Package" type="string" />
+    <Var name="mem31Index" />
+    <Var name="offsetX" expression="#dx*eq(#direction,1)" />
+    <Var name="offsetY" expression="#dy*eq(#direction,2)" />
+    <Var name="bootstrap" expression="#rw_ready" threshold="0">
+        <Trigger>
+            <IfCommand ifCondition="not(#initialized)">
+                <Consequent>
+                    <FunctionCommand target="initializePicker" />
+                </Consequent>
+            </IfCommand>
+            <IfCommand ifCondition="#pickerVisible*not(#started)">
+                <Consequent>
+                    <VariableCommand name="started" expression="1" />
+                    <FunctionCommand target="queryApps" />
+                </Consequent>
+            </IfCommand>
+        </Trigger>
+    </Var>
+    <!-- Picker bridge publishes rw_touch_time and rw_frame_time in uptime milliseconds before native dispatch/tick.
+         Settling uses this clock directly, has no delayed animation end, and shares MOVE's bounded promotion. -->
+    <Var name="motionTick" expression="#rw_frame_time" threshold="0">
+        <Trigger condition="#settling">
+            <FunctionCommand target="advanceSettle" />
+        </Trigger>
+    </Var>
+    <Function name="initializePicker">
+        <VariableCommand name="rw_user_request" expression="''" type="string" />
+        <VariableCommand name="initialized" expression="1" />
+        <VariableCommand name="requestSequence" expression="0" />
+        <VariableCommand name="started" expression="0" />
+        <VariableCommand name="dragging" expression="0" />
+        <VariableCommand name="settling" expression="0" />
+        <VariableCommand name="dx" expression="0" />
+        <VariableCommand name="dy" expression="0" />
+        <VariableCommand name="direction" expression="0" />
+        <VariableCommand name="firstTapValid" expression="0" />
+        <VariableCommand name="doubleArmed" expression="0" />
+    </Function>
+    <Function name="queryApps">
+        <BinderCommand name="apps" command="refresh" />
+    </Function>
+    <Function name="acceptApps">
+        <IfCommand
+            ifCondition="eq(#apps.loading,0)*eqs(@apps.error,'')*eq(#apps.offset,max(0,#appIndex-2))">
+            <Consequent>
+                <VariableCommand name="totalApps" expression="#apps.total" />
+                <VariableCommand name="appsReady" expression="gt(#apps.count,0)" />
+                <VariableCommand name="appIndex" expression="min(#appIndex,max(0,#totalApps-1))" />
+                <!-- Clamping after a catalogue shrink changes the request identity: never consume the old page. -->
+                <IfCommand ifCondition="eq(#apps.offset,max(0,#appIndex-2))">
+                    <Consequent>
+                        <LoopCommand count="5" indexName="row">
+                            <VariableCommand name="step" expression="#appIndex-2+#row" />
+                            <VariableCommand name="rowSlot" expression="(#step%5+5)%5" />
+                            <VariableCommand name="memorySlot" expression="#step%32" />
+                            <VariableCommand name="slotPrefix" expression="'r'+#rowSlot"
+                                type="string" />
+                            <VariableCommand expression="0" nameExp="@slotPrefix+'Valid'" />
+                            <IfCommand
+                                ifCondition="ge(#step,0)*lt(#step,#totalApps)*ge(#step-#apps.offset,0)*lt(#step-#apps.offset,#apps.count)">
+                                <Consequent>
+                                    <IfCommand
+                                        ifCondition="not(eqs(eval('@'+@slotPrefix+'Package'),@apps.packageNames[#step-#apps.offset]))">
+                                        <Consequent>
+                                            <VariableCommand expression="0"
+                                                nameExp="@slotPrefix+'vReady'" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'vBitmap'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'vProviders'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'vNames'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'vQPackage'" type="string" />
+                                            <VariableCommand expression="0"
+                                                nameExp="@slotPrefix+'lReady'" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'lBitmap'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'lProviders'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'lNames'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'lQPackage'" type="string" />
+                                            <VariableCommand expression="0"
+                                                nameExp="@slotPrefix+'nReady'" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'nBitmap'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'nProviders'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'nNames'" type="object" />
+                                            <VariableCommand expression="''"
+                                                nameExp="@slotPrefix+'nQPackage'" type="string" />
+                                            <VariableCommand expression="0"
+                                                nameExp="@slotPrefix+'WidgetIndex'" />
+                                            <IfCommand
+                                                ifCondition="eqs(eval('@mem'+#memorySlot+'Package'),@apps.packageNames[#step-#apps.offset])">
+                                                <Consequent>
+                                                    <VariableCommand
+                                                        expression="eval('#mem'+#memorySlot+'Index')"
+                                                        nameExp="@slotPrefix+'WidgetIndex'" />
+                                                </Consequent>
+                                            </IfCommand>
+                                        </Consequent>
+                                    </IfCommand>
+                                    <VariableCommand expression="#step"
+                                        nameExp="@slotPrefix+'AppIndex'" />
+                                    <VariableCommand
+                                        expression="@apps.packageNames[#step-#apps.offset]"
+                                        nameExp="@slotPrefix+'Package'" type="string" />
+                                    <VariableCommand expression="@apps.appNames[#step-#apps.offset]"
+                                        nameExp="@slotPrefix+'Name'" type="string" />
+                                    <VariableCommand
+                                        expression="#apps.widgetCounts[#step-#apps.offset]"
+                                        nameExp="@slotPrefix+'WidgetCount'" />
+                                    <VariableCommand
+                                        expression="min(max(0,eval('#'+@slotPrefix+'WidgetIndex')),max(0,eval('#'+@slotPrefix+'WidgetCount')-1))"
+                                        nameExp="@slotPrefix+'WidgetIndex'" />
+                                    <VariableCommand expression="1" nameExp="@slotPrefix+'Valid'" />
+                                </Consequent>
+                            </IfCommand>
+                        </LoopCommand>
+                        <FunctionCommand target="syncCenter" />
+                        <FunctionCommand target="queryWindows" />
+                    </Consequent>
+                    <Alternate>
+                        <VariableCommand name="appsReady" expression="0" />
+                        <VariableCommand name="currentReady" expression="0" />
+                        <VariableCommand name="firstTapValid" expression="0" />
+                        <FunctionCommand target="queryApps" />
+                    </Alternate>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="syncCenter">
+        <VariableCommand name="centerSlot" expression="#appIndex%5" />
+        <VariableCommand name="currentWidgetIndex"
+            expression="eval('#r'+#centerSlot+'WidgetIndex')" />
+        <VariableCommand name="currentWidgetCount"
+            expression="eval('#r'+#centerSlot+'WidgetCount')" />
+        <VariableCommand name="currentPackage" expression="eval('@r'+#centerSlot+'Package')"
+            type="string" />
+        <VariableCommand name="currentName" expression="eval('@r'+#centerSlot+'Name')"
+            type="string" />
+        <VariableCommand name="currentReady" expression="0" />
+        <VariableCommand name="currentProvider" expression="''" type="string" />
+        <IfCommand
+            ifCondition="eq(#centerSlot,0)*#r0Valid*eq(#r0AppIndex,#appIndex)*#r0vReady*eqs(@r0vCachePackage,@currentPackage)*ge(#currentWidgetIndex-#r0vCacheOffset,0)*lt(#currentWidgetIndex-#r0vCacheOffset,#r0vCacheCount)">
+            <Consequent>
+                <VariableCommand name="currentProvider"
+                    expression="@r0vProviders[#currentWidgetIndex-#r0vCacheOffset]" type="string" />
+                <VariableCommand name="currentReady" expression="not(eqs(@currentProvider,''))" />
+            </Consequent>
+        </IfCommand>
+        <IfCommand
+            ifCondition="eq(#centerSlot,1)*#r1Valid*eq(#r1AppIndex,#appIndex)*#r1vReady*eqs(@r1vCachePackage,@currentPackage)*ge(#currentWidgetIndex-#r1vCacheOffset,0)*lt(#currentWidgetIndex-#r1vCacheOffset,#r1vCacheCount)">
+            <Consequent>
+                <VariableCommand name="currentProvider"
+                    expression="@r1vProviders[#currentWidgetIndex-#r1vCacheOffset]" type="string" />
+                <VariableCommand name="currentReady" expression="not(eqs(@currentProvider,''))" />
+            </Consequent>
+        </IfCommand>
+        <IfCommand
+            ifCondition="eq(#centerSlot,2)*#r2Valid*eq(#r2AppIndex,#appIndex)*#r2vReady*eqs(@r2vCachePackage,@currentPackage)*ge(#currentWidgetIndex-#r2vCacheOffset,0)*lt(#currentWidgetIndex-#r2vCacheOffset,#r2vCacheCount)">
+            <Consequent>
+                <VariableCommand name="currentProvider"
+                    expression="@r2vProviders[#currentWidgetIndex-#r2vCacheOffset]" type="string" />
+                <VariableCommand name="currentReady" expression="not(eqs(@currentProvider,''))" />
+            </Consequent>
+        </IfCommand>
+        <IfCommand
+            ifCondition="eq(#centerSlot,3)*#r3Valid*eq(#r3AppIndex,#appIndex)*#r3vReady*eqs(@r3vCachePackage,@currentPackage)*ge(#currentWidgetIndex-#r3vCacheOffset,0)*lt(#currentWidgetIndex-#r3vCacheOffset,#r3vCacheCount)">
+            <Consequent>
+                <VariableCommand name="currentProvider"
+                    expression="@r3vProviders[#currentWidgetIndex-#r3vCacheOffset]" type="string" />
+                <VariableCommand name="currentReady" expression="not(eqs(@currentProvider,''))" />
+            </Consequent>
+        </IfCommand>
+        <IfCommand
+            ifCondition="eq(#centerSlot,4)*#r4Valid*eq(#r4AppIndex,#appIndex)*#r4vReady*eqs(@r4vCachePackage,@currentPackage)*ge(#currentWidgetIndex-#r4vCacheOffset,0)*lt(#currentWidgetIndex-#r4vCacheOffset,#r4vCacheCount)">
+            <Consequent>
+                <VariableCommand name="currentProvider"
+                    expression="@r4vProviders[#currentWidgetIndex-#r4vCacheOffset]" type="string" />
+                <VariableCommand name="currentReady" expression="not(eqs(@currentProvider,''))" />
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="saveHorizontal">
+        <VariableCommand name="rowSlot" expression="#appIndex%5" />
+        <VariableCommand name="memorySlot" expression="#appIndex%32" />
+        <VariableCommand name="slotPrefix" expression="'r'+#rowSlot" type="string" />
+        <IfCommand
+            ifCondition="eval('#'+@slotPrefix+'Valid')*eq(eval('#'+@slotPrefix+'AppIndex'),#appIndex)">
+            <Consequent>
+                <VariableCommand expression="eval('@'+@slotPrefix+'Package')"
+                    nameExp="'mem'+#memorySlot+'Package'" type="string" />
+                <VariableCommand expression="eval('#'+@slotPrefix+'WidgetIndex')"
+                    nameExp="'mem'+#memorySlot+'Index'" />
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="queryWindows">
+        <FunctionCommand target="queryRow0" />
+        <FunctionCommand target="queryRow1" />
+        <FunctionCommand target="queryRow2" />
+        <FunctionCommand target="queryRow3" />
+        <FunctionCommand target="queryRow4" />
+    </Function>
+    <Function name="queryRow0">
+        <IfCommand
+            ifCondition="#r0Valid*ge(#r0AppIndex,#appIndex-2)*le(#r0AppIndex,#appIndex+2)*gt(#r0WidgetCount,0)">
+            <Consequent>
+                <VariableCommand name="r0vOffset"
+                    expression="max(0,#r0WidgetIndex+floor((-#anchor-ifelse(eq(#r0AppIndex,#appIndex)*eq(#direction,1),#dx,0)-#previewBoxW/2)/#stride)+1)" />
+                <VariableCommand name="r0vLimit"
+                    expression="max(0,min(15,min(#r0WidgetCount-#r0vOffset,#r0WidgetIndex+ceil((1080-#anchor-ifelse(eq(#r0AppIndex,#appIndex)*eq(#direction,1),#dx,0)+#previewBoxW/2)/#stride)-1-#r0vOffset+1)))" />
+                <VariableCommand name="r0vPriority"
+                    expression="ifelse(lt(#centerTop+(#r0AppIndex-#appIndex)*#rowH+#dy*eq(#direction,2),#safeH)*gt(#centerTop+(#r0AppIndex-#appIndex+1)*#rowH+#dy*eq(#direction,2),0),0,1)" />
+                <VariableCommand name="r0lOffset" expression="max(0,#r0vOffset-1)" />
+                <VariableCommand name="r0lLimit" expression="gt(#r0vOffset,0)" />
+                <VariableCommand name="r0nOffset" expression="#r0vOffset+#r0vLimit" />
+                <VariableCommand name="r0nLimit" expression="lt(#r0nOffset,#r0WidgetCount)" />
+                <VariableCommand name="r0lPriority" expression="ifelse(eq(#r0vPriority,0),1,2)" />
+                <VariableCommand name="r0nPriority" expression="ifelse(eq(#r0vPriority,0),1,2)" />
+                <IfCommand
+                    ifCondition="gt(#r0vLimit,0)*(not(eqs(@r0vQPackage,@r0Package))+ne(#r0vQOffset,#r0vOffset)+ne(#r0vQLimit,#r0vLimit)+ne(#r0vQPriority,#r0vPriority)+ne(#r0vQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r0vQSize" expression="#previewSize" />
+                        <VariableCommand name="r0vQPackage" expression="@r0Package" type="string" />
+                        <VariableCommand name="r0vQOffset" expression="#r0vOffset" />
+                        <VariableCommand name="r0vQLimit" expression="#r0vLimit" />
+                        <VariableCommand name="r0vQPriority" expression="#r0vPriority" />
+                        <BinderCommand name="r0v" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r0lLimit,0)*(not(eqs(@r0lQPackage,@r0Package))+ne(#r0lQOffset,#r0lOffset)+ne(#r0lQLimit,#r0lLimit)+ne(#r0lQPriority,#r0lPriority)+ne(#r0lQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r0lQSize" expression="#previewSize" />
+                        <VariableCommand name="r0lQPackage" expression="@r0Package" type="string" />
+                        <VariableCommand name="r0lQOffset" expression="#r0lOffset" />
+                        <VariableCommand name="r0lQLimit" expression="#r0lLimit" />
+                        <VariableCommand name="r0lQPriority" expression="#r0lPriority" />
+                        <BinderCommand name="r0l" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r0nLimit,0)*(not(eqs(@r0nQPackage,@r0Package))+ne(#r0nQOffset,#r0nOffset)+ne(#r0nQLimit,#r0nLimit)+ne(#r0nQPriority,#r0nPriority)+ne(#r0nQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r0nQSize" expression="#previewSize" />
+                        <VariableCommand name="r0nQPackage" expression="@r0Package" type="string" />
+                        <VariableCommand name="r0nQOffset" expression="#r0nOffset" />
+                        <VariableCommand name="r0nQLimit" expression="#r0nLimit" />
+                        <VariableCommand name="r0nQPriority" expression="#r0nPriority" />
+                        <BinderCommand name="r0n" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr0v">
+        <IfCommand
+            ifCondition="eq(#r0v.loading,0)*eqs(@r0v.error,'')*#r0Valid*ge(#r0AppIndex,#appIndex-2)*le(#r0AppIndex,#appIndex+2)*eqs(@r0vQPackage,@r0Package)*eq(#r0v.offset,#r0vQOffset)*gt(#r0v.count,0)*le(#r0v.count,#r0vQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r0v.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r0v.packageNames[#item],@r0Package)*not(eqs(@r0v.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r0vBitmap" expression="'r0v.previews'"
+                            type="object" />
+                        <VariableCommand name="r0vProviders" expression="'r0v.providers'"
+                            type="object" />
+                        <VariableCommand name="r0vNames" expression="'r0v.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r0vCachePackage" expression="@r0Package"
+                            type="string" />
+                        <VariableCommand name="r0vCacheOffset" expression="#r0v.offset" />
+                        <VariableCommand name="r0vCacheCount" expression="#r0v.count" />
+                        <VariableCommand name="r0vReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr0l">
+        <IfCommand
+            ifCondition="eq(#r0l.loading,0)*eqs(@r0l.error,'')*#r0Valid*ge(#r0AppIndex,#appIndex-2)*le(#r0AppIndex,#appIndex+2)*eqs(@r0lQPackage,@r0Package)*eq(#r0l.offset,#r0lQOffset)*gt(#r0l.count,0)*le(#r0l.count,#r0lQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r0l.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r0l.packageNames[#item],@r0Package)*not(eqs(@r0l.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r0lBitmap" expression="'r0l.previews'"
+                            type="object" />
+                        <VariableCommand name="r0lProviders" expression="'r0l.providers'"
+                            type="object" />
+                        <VariableCommand name="r0lNames" expression="'r0l.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r0lCachePackage" expression="@r0Package"
+                            type="string" />
+                        <VariableCommand name="r0lCacheOffset" expression="#r0l.offset" />
+                        <VariableCommand name="r0lCacheCount" expression="#r0l.count" />
+                        <VariableCommand name="r0lReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr0n">
+        <IfCommand
+            ifCondition="eq(#r0n.loading,0)*eqs(@r0n.error,'')*#r0Valid*ge(#r0AppIndex,#appIndex-2)*le(#r0AppIndex,#appIndex+2)*eqs(@r0nQPackage,@r0Package)*eq(#r0n.offset,#r0nQOffset)*gt(#r0n.count,0)*le(#r0n.count,#r0nQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r0n.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r0n.packageNames[#item],@r0Package)*not(eqs(@r0n.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r0nBitmap" expression="'r0n.previews'"
+                            type="object" />
+                        <VariableCommand name="r0nProviders" expression="'r0n.providers'"
+                            type="object" />
+                        <VariableCommand name="r0nNames" expression="'r0n.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r0nCachePackage" expression="@r0Package"
+                            type="string" />
+                        <VariableCommand name="r0nCacheOffset" expression="#r0n.offset" />
+                        <VariableCommand name="r0nCacheCount" expression="#r0n.count" />
+                        <VariableCommand name="r0nReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="queryRow1">
+        <IfCommand
+            ifCondition="#r1Valid*ge(#r1AppIndex,#appIndex-2)*le(#r1AppIndex,#appIndex+2)*gt(#r1WidgetCount,0)">
+            <Consequent>
+                <VariableCommand name="r1vOffset"
+                    expression="max(0,#r1WidgetIndex+floor((-#anchor-ifelse(eq(#r1AppIndex,#appIndex)*eq(#direction,1),#dx,0)-#previewBoxW/2)/#stride)+1)" />
+                <VariableCommand name="r1vLimit"
+                    expression="max(0,min(15,min(#r1WidgetCount-#r1vOffset,#r1WidgetIndex+ceil((1080-#anchor-ifelse(eq(#r1AppIndex,#appIndex)*eq(#direction,1),#dx,0)+#previewBoxW/2)/#stride)-1-#r1vOffset+1)))" />
+                <VariableCommand name="r1vPriority"
+                    expression="ifelse(lt(#centerTop+(#r1AppIndex-#appIndex)*#rowH+#dy*eq(#direction,2),#safeH)*gt(#centerTop+(#r1AppIndex-#appIndex+1)*#rowH+#dy*eq(#direction,2),0),0,1)" />
+                <VariableCommand name="r1lOffset" expression="max(0,#r1vOffset-1)" />
+                <VariableCommand name="r1lLimit" expression="gt(#r1vOffset,0)" />
+                <VariableCommand name="r1nOffset" expression="#r1vOffset+#r1vLimit" />
+                <VariableCommand name="r1nLimit" expression="lt(#r1nOffset,#r1WidgetCount)" />
+                <VariableCommand name="r1lPriority" expression="ifelse(eq(#r1vPriority,0),1,2)" />
+                <VariableCommand name="r1nPriority" expression="ifelse(eq(#r1vPriority,0),1,2)" />
+                <IfCommand
+                    ifCondition="gt(#r1vLimit,0)*(not(eqs(@r1vQPackage,@r1Package))+ne(#r1vQOffset,#r1vOffset)+ne(#r1vQLimit,#r1vLimit)+ne(#r1vQPriority,#r1vPriority)+ne(#r1vQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r1vQSize" expression="#previewSize" />
+                        <VariableCommand name="r1vQPackage" expression="@r1Package" type="string" />
+                        <VariableCommand name="r1vQOffset" expression="#r1vOffset" />
+                        <VariableCommand name="r1vQLimit" expression="#r1vLimit" />
+                        <VariableCommand name="r1vQPriority" expression="#r1vPriority" />
+                        <BinderCommand name="r1v" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r1lLimit,0)*(not(eqs(@r1lQPackage,@r1Package))+ne(#r1lQOffset,#r1lOffset)+ne(#r1lQLimit,#r1lLimit)+ne(#r1lQPriority,#r1lPriority)+ne(#r1lQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r1lQSize" expression="#previewSize" />
+                        <VariableCommand name="r1lQPackage" expression="@r1Package" type="string" />
+                        <VariableCommand name="r1lQOffset" expression="#r1lOffset" />
+                        <VariableCommand name="r1lQLimit" expression="#r1lLimit" />
+                        <VariableCommand name="r1lQPriority" expression="#r1lPriority" />
+                        <BinderCommand name="r1l" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r1nLimit,0)*(not(eqs(@r1nQPackage,@r1Package))+ne(#r1nQOffset,#r1nOffset)+ne(#r1nQLimit,#r1nLimit)+ne(#r1nQPriority,#r1nPriority)+ne(#r1nQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r1nQSize" expression="#previewSize" />
+                        <VariableCommand name="r1nQPackage" expression="@r1Package" type="string" />
+                        <VariableCommand name="r1nQOffset" expression="#r1nOffset" />
+                        <VariableCommand name="r1nQLimit" expression="#r1nLimit" />
+                        <VariableCommand name="r1nQPriority" expression="#r1nPriority" />
+                        <BinderCommand name="r1n" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr1v">
+        <IfCommand
+            ifCondition="eq(#r1v.loading,0)*eqs(@r1v.error,'')*#r1Valid*ge(#r1AppIndex,#appIndex-2)*le(#r1AppIndex,#appIndex+2)*eqs(@r1vQPackage,@r1Package)*eq(#r1v.offset,#r1vQOffset)*gt(#r1v.count,0)*le(#r1v.count,#r1vQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r1v.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r1v.packageNames[#item],@r1Package)*not(eqs(@r1v.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r1vBitmap" expression="'r1v.previews'"
+                            type="object" />
+                        <VariableCommand name="r1vProviders" expression="'r1v.providers'"
+                            type="object" />
+                        <VariableCommand name="r1vNames" expression="'r1v.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r1vCachePackage" expression="@r1Package"
+                            type="string" />
+                        <VariableCommand name="r1vCacheOffset" expression="#r1v.offset" />
+                        <VariableCommand name="r1vCacheCount" expression="#r1v.count" />
+                        <VariableCommand name="r1vReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr1l">
+        <IfCommand
+            ifCondition="eq(#r1l.loading,0)*eqs(@r1l.error,'')*#r1Valid*ge(#r1AppIndex,#appIndex-2)*le(#r1AppIndex,#appIndex+2)*eqs(@r1lQPackage,@r1Package)*eq(#r1l.offset,#r1lQOffset)*gt(#r1l.count,0)*le(#r1l.count,#r1lQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r1l.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r1l.packageNames[#item],@r1Package)*not(eqs(@r1l.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r1lBitmap" expression="'r1l.previews'"
+                            type="object" />
+                        <VariableCommand name="r1lProviders" expression="'r1l.providers'"
+                            type="object" />
+                        <VariableCommand name="r1lNames" expression="'r1l.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r1lCachePackage" expression="@r1Package"
+                            type="string" />
+                        <VariableCommand name="r1lCacheOffset" expression="#r1l.offset" />
+                        <VariableCommand name="r1lCacheCount" expression="#r1l.count" />
+                        <VariableCommand name="r1lReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr1n">
+        <IfCommand
+            ifCondition="eq(#r1n.loading,0)*eqs(@r1n.error,'')*#r1Valid*ge(#r1AppIndex,#appIndex-2)*le(#r1AppIndex,#appIndex+2)*eqs(@r1nQPackage,@r1Package)*eq(#r1n.offset,#r1nQOffset)*gt(#r1n.count,0)*le(#r1n.count,#r1nQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r1n.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r1n.packageNames[#item],@r1Package)*not(eqs(@r1n.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r1nBitmap" expression="'r1n.previews'"
+                            type="object" />
+                        <VariableCommand name="r1nProviders" expression="'r1n.providers'"
+                            type="object" />
+                        <VariableCommand name="r1nNames" expression="'r1n.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r1nCachePackage" expression="@r1Package"
+                            type="string" />
+                        <VariableCommand name="r1nCacheOffset" expression="#r1n.offset" />
+                        <VariableCommand name="r1nCacheCount" expression="#r1n.count" />
+                        <VariableCommand name="r1nReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="queryRow2">
+        <IfCommand
+            ifCondition="#r2Valid*ge(#r2AppIndex,#appIndex-2)*le(#r2AppIndex,#appIndex+2)*gt(#r2WidgetCount,0)">
+            <Consequent>
+                <VariableCommand name="r2vOffset"
+                    expression="max(0,#r2WidgetIndex+floor((-#anchor-ifelse(eq(#r2AppIndex,#appIndex)*eq(#direction,1),#dx,0)-#previewBoxW/2)/#stride)+1)" />
+                <VariableCommand name="r2vLimit"
+                    expression="max(0,min(15,min(#r2WidgetCount-#r2vOffset,#r2WidgetIndex+ceil((1080-#anchor-ifelse(eq(#r2AppIndex,#appIndex)*eq(#direction,1),#dx,0)+#previewBoxW/2)/#stride)-1-#r2vOffset+1)))" />
+                <VariableCommand name="r2vPriority"
+                    expression="ifelse(lt(#centerTop+(#r2AppIndex-#appIndex)*#rowH+#dy*eq(#direction,2),#safeH)*gt(#centerTop+(#r2AppIndex-#appIndex+1)*#rowH+#dy*eq(#direction,2),0),0,1)" />
+                <VariableCommand name="r2lOffset" expression="max(0,#r2vOffset-1)" />
+                <VariableCommand name="r2lLimit" expression="gt(#r2vOffset,0)" />
+                <VariableCommand name="r2nOffset" expression="#r2vOffset+#r2vLimit" />
+                <VariableCommand name="r2nLimit" expression="lt(#r2nOffset,#r2WidgetCount)" />
+                <VariableCommand name="r2lPriority" expression="ifelse(eq(#r2vPriority,0),1,2)" />
+                <VariableCommand name="r2nPriority" expression="ifelse(eq(#r2vPriority,0),1,2)" />
+                <IfCommand
+                    ifCondition="gt(#r2vLimit,0)*(not(eqs(@r2vQPackage,@r2Package))+ne(#r2vQOffset,#r2vOffset)+ne(#r2vQLimit,#r2vLimit)+ne(#r2vQPriority,#r2vPriority)+ne(#r2vQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r2vQSize" expression="#previewSize" />
+                        <VariableCommand name="r2vQPackage" expression="@r2Package" type="string" />
+                        <VariableCommand name="r2vQOffset" expression="#r2vOffset" />
+                        <VariableCommand name="r2vQLimit" expression="#r2vLimit" />
+                        <VariableCommand name="r2vQPriority" expression="#r2vPriority" />
+                        <BinderCommand name="r2v" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r2lLimit,0)*(not(eqs(@r2lQPackage,@r2Package))+ne(#r2lQOffset,#r2lOffset)+ne(#r2lQLimit,#r2lLimit)+ne(#r2lQPriority,#r2lPriority)+ne(#r2lQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r2lQSize" expression="#previewSize" />
+                        <VariableCommand name="r2lQPackage" expression="@r2Package" type="string" />
+                        <VariableCommand name="r2lQOffset" expression="#r2lOffset" />
+                        <VariableCommand name="r2lQLimit" expression="#r2lLimit" />
+                        <VariableCommand name="r2lQPriority" expression="#r2lPriority" />
+                        <BinderCommand name="r2l" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r2nLimit,0)*(not(eqs(@r2nQPackage,@r2Package))+ne(#r2nQOffset,#r2nOffset)+ne(#r2nQLimit,#r2nLimit)+ne(#r2nQPriority,#r2nPriority)+ne(#r2nQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r2nQSize" expression="#previewSize" />
+                        <VariableCommand name="r2nQPackage" expression="@r2Package" type="string" />
+                        <VariableCommand name="r2nQOffset" expression="#r2nOffset" />
+                        <VariableCommand name="r2nQLimit" expression="#r2nLimit" />
+                        <VariableCommand name="r2nQPriority" expression="#r2nPriority" />
+                        <BinderCommand name="r2n" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr2v">
+        <IfCommand
+            ifCondition="eq(#r2v.loading,0)*eqs(@r2v.error,'')*#r2Valid*ge(#r2AppIndex,#appIndex-2)*le(#r2AppIndex,#appIndex+2)*eqs(@r2vQPackage,@r2Package)*eq(#r2v.offset,#r2vQOffset)*gt(#r2v.count,0)*le(#r2v.count,#r2vQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r2v.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r2v.packageNames[#item],@r2Package)*not(eqs(@r2v.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r2vBitmap" expression="'r2v.previews'"
+                            type="object" />
+                        <VariableCommand name="r2vProviders" expression="'r2v.providers'"
+                            type="object" />
+                        <VariableCommand name="r2vNames" expression="'r2v.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r2vCachePackage" expression="@r2Package"
+                            type="string" />
+                        <VariableCommand name="r2vCacheOffset" expression="#r2v.offset" />
+                        <VariableCommand name="r2vCacheCount" expression="#r2v.count" />
+                        <VariableCommand name="r2vReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr2l">
+        <IfCommand
+            ifCondition="eq(#r2l.loading,0)*eqs(@r2l.error,'')*#r2Valid*ge(#r2AppIndex,#appIndex-2)*le(#r2AppIndex,#appIndex+2)*eqs(@r2lQPackage,@r2Package)*eq(#r2l.offset,#r2lQOffset)*gt(#r2l.count,0)*le(#r2l.count,#r2lQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r2l.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r2l.packageNames[#item],@r2Package)*not(eqs(@r2l.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r2lBitmap" expression="'r2l.previews'"
+                            type="object" />
+                        <VariableCommand name="r2lProviders" expression="'r2l.providers'"
+                            type="object" />
+                        <VariableCommand name="r2lNames" expression="'r2l.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r2lCachePackage" expression="@r2Package"
+                            type="string" />
+                        <VariableCommand name="r2lCacheOffset" expression="#r2l.offset" />
+                        <VariableCommand name="r2lCacheCount" expression="#r2l.count" />
+                        <VariableCommand name="r2lReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr2n">
+        <IfCommand
+            ifCondition="eq(#r2n.loading,0)*eqs(@r2n.error,'')*#r2Valid*ge(#r2AppIndex,#appIndex-2)*le(#r2AppIndex,#appIndex+2)*eqs(@r2nQPackage,@r2Package)*eq(#r2n.offset,#r2nQOffset)*gt(#r2n.count,0)*le(#r2n.count,#r2nQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r2n.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r2n.packageNames[#item],@r2Package)*not(eqs(@r2n.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r2nBitmap" expression="'r2n.previews'"
+                            type="object" />
+                        <VariableCommand name="r2nProviders" expression="'r2n.providers'"
+                            type="object" />
+                        <VariableCommand name="r2nNames" expression="'r2n.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r2nCachePackage" expression="@r2Package"
+                            type="string" />
+                        <VariableCommand name="r2nCacheOffset" expression="#r2n.offset" />
+                        <VariableCommand name="r2nCacheCount" expression="#r2n.count" />
+                        <VariableCommand name="r2nReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="queryRow3">
+        <IfCommand
+            ifCondition="#r3Valid*ge(#r3AppIndex,#appIndex-2)*le(#r3AppIndex,#appIndex+2)*gt(#r3WidgetCount,0)">
+            <Consequent>
+                <VariableCommand name="r3vOffset"
+                    expression="max(0,#r3WidgetIndex+floor((-#anchor-ifelse(eq(#r3AppIndex,#appIndex)*eq(#direction,1),#dx,0)-#previewBoxW/2)/#stride)+1)" />
+                <VariableCommand name="r3vLimit"
+                    expression="max(0,min(15,min(#r3WidgetCount-#r3vOffset,#r3WidgetIndex+ceil((1080-#anchor-ifelse(eq(#r3AppIndex,#appIndex)*eq(#direction,1),#dx,0)+#previewBoxW/2)/#stride)-1-#r3vOffset+1)))" />
+                <VariableCommand name="r3vPriority"
+                    expression="ifelse(lt(#centerTop+(#r3AppIndex-#appIndex)*#rowH+#dy*eq(#direction,2),#safeH)*gt(#centerTop+(#r3AppIndex-#appIndex+1)*#rowH+#dy*eq(#direction,2),0),0,1)" />
+                <VariableCommand name="r3lOffset" expression="max(0,#r3vOffset-1)" />
+                <VariableCommand name="r3lLimit" expression="gt(#r3vOffset,0)" />
+                <VariableCommand name="r3nOffset" expression="#r3vOffset+#r3vLimit" />
+                <VariableCommand name="r3nLimit" expression="lt(#r3nOffset,#r3WidgetCount)" />
+                <VariableCommand name="r3lPriority" expression="ifelse(eq(#r3vPriority,0),1,2)" />
+                <VariableCommand name="r3nPriority" expression="ifelse(eq(#r3vPriority,0),1,2)" />
+                <IfCommand
+                    ifCondition="gt(#r3vLimit,0)*(not(eqs(@r3vQPackage,@r3Package))+ne(#r3vQOffset,#r3vOffset)+ne(#r3vQLimit,#r3vLimit)+ne(#r3vQPriority,#r3vPriority)+ne(#r3vQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r3vQSize" expression="#previewSize" />
+                        <VariableCommand name="r3vQPackage" expression="@r3Package" type="string" />
+                        <VariableCommand name="r3vQOffset" expression="#r3vOffset" />
+                        <VariableCommand name="r3vQLimit" expression="#r3vLimit" />
+                        <VariableCommand name="r3vQPriority" expression="#r3vPriority" />
+                        <BinderCommand name="r3v" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r3lLimit,0)*(not(eqs(@r3lQPackage,@r3Package))+ne(#r3lQOffset,#r3lOffset)+ne(#r3lQLimit,#r3lLimit)+ne(#r3lQPriority,#r3lPriority)+ne(#r3lQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r3lQSize" expression="#previewSize" />
+                        <VariableCommand name="r3lQPackage" expression="@r3Package" type="string" />
+                        <VariableCommand name="r3lQOffset" expression="#r3lOffset" />
+                        <VariableCommand name="r3lQLimit" expression="#r3lLimit" />
+                        <VariableCommand name="r3lQPriority" expression="#r3lPriority" />
+                        <BinderCommand name="r3l" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r3nLimit,0)*(not(eqs(@r3nQPackage,@r3Package))+ne(#r3nQOffset,#r3nOffset)+ne(#r3nQLimit,#r3nLimit)+ne(#r3nQPriority,#r3nPriority)+ne(#r3nQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r3nQSize" expression="#previewSize" />
+                        <VariableCommand name="r3nQPackage" expression="@r3Package" type="string" />
+                        <VariableCommand name="r3nQOffset" expression="#r3nOffset" />
+                        <VariableCommand name="r3nQLimit" expression="#r3nLimit" />
+                        <VariableCommand name="r3nQPriority" expression="#r3nPriority" />
+                        <BinderCommand name="r3n" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr3v">
+        <IfCommand
+            ifCondition="eq(#r3v.loading,0)*eqs(@r3v.error,'')*#r3Valid*ge(#r3AppIndex,#appIndex-2)*le(#r3AppIndex,#appIndex+2)*eqs(@r3vQPackage,@r3Package)*eq(#r3v.offset,#r3vQOffset)*gt(#r3v.count,0)*le(#r3v.count,#r3vQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r3v.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r3v.packageNames[#item],@r3Package)*not(eqs(@r3v.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r3vBitmap" expression="'r3v.previews'"
+                            type="object" />
+                        <VariableCommand name="r3vProviders" expression="'r3v.providers'"
+                            type="object" />
+                        <VariableCommand name="r3vNames" expression="'r3v.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r3vCachePackage" expression="@r3Package"
+                            type="string" />
+                        <VariableCommand name="r3vCacheOffset" expression="#r3v.offset" />
+                        <VariableCommand name="r3vCacheCount" expression="#r3v.count" />
+                        <VariableCommand name="r3vReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr3l">
+        <IfCommand
+            ifCondition="eq(#r3l.loading,0)*eqs(@r3l.error,'')*#r3Valid*ge(#r3AppIndex,#appIndex-2)*le(#r3AppIndex,#appIndex+2)*eqs(@r3lQPackage,@r3Package)*eq(#r3l.offset,#r3lQOffset)*gt(#r3l.count,0)*le(#r3l.count,#r3lQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r3l.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r3l.packageNames[#item],@r3Package)*not(eqs(@r3l.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r3lBitmap" expression="'r3l.previews'"
+                            type="object" />
+                        <VariableCommand name="r3lProviders" expression="'r3l.providers'"
+                            type="object" />
+                        <VariableCommand name="r3lNames" expression="'r3l.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r3lCachePackage" expression="@r3Package"
+                            type="string" />
+                        <VariableCommand name="r3lCacheOffset" expression="#r3l.offset" />
+                        <VariableCommand name="r3lCacheCount" expression="#r3l.count" />
+                        <VariableCommand name="r3lReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr3n">
+        <IfCommand
+            ifCondition="eq(#r3n.loading,0)*eqs(@r3n.error,'')*#r3Valid*ge(#r3AppIndex,#appIndex-2)*le(#r3AppIndex,#appIndex+2)*eqs(@r3nQPackage,@r3Package)*eq(#r3n.offset,#r3nQOffset)*gt(#r3n.count,0)*le(#r3n.count,#r3nQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r3n.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r3n.packageNames[#item],@r3Package)*not(eqs(@r3n.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r3nBitmap" expression="'r3n.previews'"
+                            type="object" />
+                        <VariableCommand name="r3nProviders" expression="'r3n.providers'"
+                            type="object" />
+                        <VariableCommand name="r3nNames" expression="'r3n.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r3nCachePackage" expression="@r3Package"
+                            type="string" />
+                        <VariableCommand name="r3nCacheOffset" expression="#r3n.offset" />
+                        <VariableCommand name="r3nCacheCount" expression="#r3n.count" />
+                        <VariableCommand name="r3nReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="queryRow4">
+        <IfCommand
+            ifCondition="#r4Valid*ge(#r4AppIndex,#appIndex-2)*le(#r4AppIndex,#appIndex+2)*gt(#r4WidgetCount,0)">
+            <Consequent>
+                <VariableCommand name="r4vOffset"
+                    expression="max(0,#r4WidgetIndex+floor((-#anchor-ifelse(eq(#r4AppIndex,#appIndex)*eq(#direction,1),#dx,0)-#previewBoxW/2)/#stride)+1)" />
+                <VariableCommand name="r4vLimit"
+                    expression="max(0,min(15,min(#r4WidgetCount-#r4vOffset,#r4WidgetIndex+ceil((1080-#anchor-ifelse(eq(#r4AppIndex,#appIndex)*eq(#direction,1),#dx,0)+#previewBoxW/2)/#stride)-1-#r4vOffset+1)))" />
+                <VariableCommand name="r4vPriority"
+                    expression="ifelse(lt(#centerTop+(#r4AppIndex-#appIndex)*#rowH+#dy*eq(#direction,2),#safeH)*gt(#centerTop+(#r4AppIndex-#appIndex+1)*#rowH+#dy*eq(#direction,2),0),0,1)" />
+                <VariableCommand name="r4lOffset" expression="max(0,#r4vOffset-1)" />
+                <VariableCommand name="r4lLimit" expression="gt(#r4vOffset,0)" />
+                <VariableCommand name="r4nOffset" expression="#r4vOffset+#r4vLimit" />
+                <VariableCommand name="r4nLimit" expression="lt(#r4nOffset,#r4WidgetCount)" />
+                <VariableCommand name="r4lPriority" expression="ifelse(eq(#r4vPriority,0),1,2)" />
+                <VariableCommand name="r4nPriority" expression="ifelse(eq(#r4vPriority,0),1,2)" />
+                <IfCommand
+                    ifCondition="gt(#r4vLimit,0)*(not(eqs(@r4vQPackage,@r4Package))+ne(#r4vQOffset,#r4vOffset)+ne(#r4vQLimit,#r4vLimit)+ne(#r4vQPriority,#r4vPriority)+ne(#r4vQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r4vQSize" expression="#previewSize" />
+                        <VariableCommand name="r4vQPackage" expression="@r4Package" type="string" />
+                        <VariableCommand name="r4vQOffset" expression="#r4vOffset" />
+                        <VariableCommand name="r4vQLimit" expression="#r4vLimit" />
+                        <VariableCommand name="r4vQPriority" expression="#r4vPriority" />
+                        <BinderCommand name="r4v" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r4lLimit,0)*(not(eqs(@r4lQPackage,@r4Package))+ne(#r4lQOffset,#r4lOffset)+ne(#r4lQLimit,#r4lLimit)+ne(#r4lQPriority,#r4lPriority)+ne(#r4lQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r4lQSize" expression="#previewSize" />
+                        <VariableCommand name="r4lQPackage" expression="@r4Package" type="string" />
+                        <VariableCommand name="r4lQOffset" expression="#r4lOffset" />
+                        <VariableCommand name="r4lQLimit" expression="#r4lLimit" />
+                        <VariableCommand name="r4lQPriority" expression="#r4lPriority" />
+                        <BinderCommand name="r4l" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="gt(#r4nLimit,0)*(not(eqs(@r4nQPackage,@r4Package))+ne(#r4nQOffset,#r4nOffset)+ne(#r4nQLimit,#r4nLimit)+ne(#r4nQPriority,#r4nPriority)+ne(#r4nQSize,#previewSize))">
+                    <Consequent>
+                        <VariableCommand name="r4nQSize" expression="#previewSize" />
+                        <VariableCommand name="r4nQPackage" expression="@r4Package" type="string" />
+                        <VariableCommand name="r4nQOffset" expression="#r4nOffset" />
+                        <VariableCommand name="r4nQLimit" expression="#r4nLimit" />
+                        <VariableCommand name="r4nQPriority" expression="#r4nPriority" />
+                        <BinderCommand name="r4n" command="refresh"
+                            condition="gt(#previewSize,0)" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr4v">
+        <IfCommand
+            ifCondition="eq(#r4v.loading,0)*eqs(@r4v.error,'')*#r4Valid*ge(#r4AppIndex,#appIndex-2)*le(#r4AppIndex,#appIndex+2)*eqs(@r4vQPackage,@r4Package)*eq(#r4v.offset,#r4vQOffset)*gt(#r4v.count,0)*le(#r4v.count,#r4vQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r4v.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r4v.packageNames[#item],@r4Package)*not(eqs(@r4v.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r4vBitmap" expression="'r4v.previews'"
+                            type="object" />
+                        <VariableCommand name="r4vProviders" expression="'r4v.providers'"
+                            type="object" />
+                        <VariableCommand name="r4vNames" expression="'r4v.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r4vCachePackage" expression="@r4Package"
+                            type="string" />
+                        <VariableCommand name="r4vCacheOffset" expression="#r4v.offset" />
+                        <VariableCommand name="r4vCacheCount" expression="#r4v.count" />
+                        <VariableCommand name="r4vReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr4l">
+        <IfCommand
+            ifCondition="eq(#r4l.loading,0)*eqs(@r4l.error,'')*#r4Valid*ge(#r4AppIndex,#appIndex-2)*le(#r4AppIndex,#appIndex+2)*eqs(@r4lQPackage,@r4Package)*eq(#r4l.offset,#r4lQOffset)*gt(#r4l.count,0)*le(#r4l.count,#r4lQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r4l.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r4l.packageNames[#item],@r4Package)*not(eqs(@r4l.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r4lBitmap" expression="'r4l.previews'"
+                            type="object" />
+                        <VariableCommand name="r4lProviders" expression="'r4l.providers'"
+                            type="object" />
+                        <VariableCommand name="r4lNames" expression="'r4l.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r4lCachePackage" expression="@r4Package"
+                            type="string" />
+                        <VariableCommand name="r4lCacheOffset" expression="#r4l.offset" />
+                        <VariableCommand name="r4lCacheCount" expression="#r4l.count" />
+                        <VariableCommand name="r4lReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="acceptr4n">
+        <IfCommand
+            ifCondition="eq(#r4n.loading,0)*eqs(@r4n.error,'')*#r4Valid*ge(#r4AppIndex,#appIndex-2)*le(#r4AppIndex,#appIndex+2)*eqs(@r4nQPackage,@r4Package)*eq(#r4n.offset,#r4nQOffset)*gt(#r4n.count,0)*le(#r4n.count,#r4nQLimit)">
+            <Consequent>
+                <VariableCommand name="remaining" expression="1" />
+                <LoopCommand count="#r4n.count" indexName="item">
+                    <VariableCommand name="remaining"
+                        expression="#remaining*eqs(@r4n.packageNames[#item],@r4Package)*not(eqs(@r4n.providers[#item],''))" />
+                </LoopCommand>
+                <IfCommand ifCondition="#remaining">
+                    <Consequent>
+                        <VariableCommand name="r4nBitmap" expression="'r4n.previews'"
+                            type="object" />
+                        <VariableCommand name="r4nProviders" expression="'r4n.providers'"
+                            type="object" />
+                        <VariableCommand name="r4nNames" expression="'r4n.widgetNames'"
+                            type="object" />
+                        <VariableCommand name="r4nCachePackage" expression="@r4Package"
+                            type="string" />
+                        <VariableCommand name="r4nCacheOffset" expression="#r4n.offset" />
+                        <VariableCommand name="r4nCacheCount" expression="#r4n.count" />
+                        <VariableCommand name="r4nReady" expression="1" />
+                        <FunctionCommand target="syncCenter" />
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="beginGesture">
+        <FunctionCommand condition="#settling" target="advanceSettle" />
+        <VariableCommand name="tapEligible" expression="not(#settling)" />
+        <VariableCommand name="firstTapValid" condition="#settling" expression="0" />
+        <VariableCommand name="motionEpoch" expression="#motionEpoch+1" />
+        <VariableCommand name="settling" expression="0" />
+        <VariableCommand name="downX" expression="#touch_x-#dx" />
+        <VariableCommand name="downY" expression="#touch_y-#dy" />
+        <VariableCommand name="downTime" expression="#rw_touch_time" />
+        <VariableCommand name="lastTime" expression="#rw_touch_time" />
+        <VariableCommand name="lastX" expression="#touch_x" />
+        <VariableCommand name="lastY" expression="#touch_y" />
+        <VariableCommand name="velocityX" expression="0" />
+        <VariableCommand name="velocityY" expression="0" />
+        <VariableCommand name="dragging" expression="1" />
+        <VariableCommand name="doubleArmed" expression="0" />
+        <VariableCommand name="direction" condition="eq(#dx,0)*eq(#dy,0)" expression="0" />
+        <VariableCommand name="centerDown"
+            expression="ge(#touch_y,#safeY+#centerTop)*lt(#touch_y,#safeY+#centerTop+#rowH)*ge(#touch_x,#anchor-#previewBoxW/2)*le(#touch_x,#anchor+#previewBoxW/2)" />
+    </Function>
+    <Function name="moveGesture">
+        <IfCommand ifCondition="#dragging">
+            <Consequent>
+                <VariableCommand name="dx" expression="#touch_x-#downX" />
+                <VariableCommand name="dy" expression="#touch_y-#downY" />
+                <VariableCommand name="direction"
+                    condition="eq(#direction,0)*ge(max(abs(#dx),abs(#dy)),8*#scale)"
+                    expression="ifelse(gt(abs(#dx),abs(#dy)),1,2)" />
+                <VariableCommand name="tapEligible" condition="ge(max(abs(#dx),abs(#dy)),8*#scale)"
+                    expression="0" />
+                <VariableCommand name="firstTapValid" condition="not(#tapEligible)"
+                    expression="0" />
+                <VariableCommand name="velocityX" condition="gt(#rw_touch_time,#lastTime)"
+                    expression="max(-3,min(3,(#touch_x-#lastX)/max(1,#rw_touch_time-#lastTime)))" />
+                <VariableCommand name="velocityY" condition="gt(#rw_touch_time,#lastTime)"
+                    expression="max(-3,min(3,(#touch_y-#lastY)/max(1,#rw_touch_time-#lastTime)))" />
+                <VariableCommand name="lastTime" expression="#rw_touch_time" />
+                <VariableCommand name="lastX" expression="#touch_x" />
+                <VariableCommand name="lastY" expression="#touch_y" />
+                <FunctionCommand target="promoteMotion" />
+                <FunctionCommand target="queryWindows" />
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="promoteMotion">
+        <LoopCommand count="32" indexName="hop"
+            loopCondition="(eq(#direction,2)*ge(abs(#dy),#rowH))+(eq(#direction,1)*ge(abs(#dx),#stride))">
+            <VariableCommand name="step" expression="0" />
+            <VariableCommand name="step"
+                condition="eq(#direction,2)*ifelse(lt(#dy,0),lt(#appIndex+1,#totalApps),gt(#appIndex,0))"
+                expression="ifelse(lt(#dy,0),1,-1)" />
+            <IfCommand ifCondition="eq(#direction,2)*ne(#step,0)">
+                <Consequent>
+                    <FunctionCommand target="saveHorizontal" />
+                    <VariableCommand name="appIndex" expression="#appIndex+#step" />
+                    <VariableCommand name="dy" expression="#dy+#step*#rowH" />
+                    <VariableCommand name="downY" condition="#dragging"
+                        expression="#downY-#step*#rowH" />
+                    <VariableCommand name="snapFromY" condition="#settling"
+                        expression="#snapFromY+#step*#rowH" />
+                    <VariableCommand name="snapToY" condition="#settling"
+                        expression="#snapToY+#step*#rowH" />
+                    <FunctionCommand target="syncCenter" />
+                    <FunctionCommand target="queryApps" />
+                    <FunctionCommand target="queryWindows" />
+                </Consequent>
+            </IfCommand>
+            <VariableCommand name="step" condition="eq(#direction,1)" expression="0" />
+            <VariableCommand name="step"
+                condition="eq(#direction,1)*ifelse(lt(#dx,0),lt(#currentWidgetIndex+1,#currentWidgetCount),gt(#currentWidgetIndex,0))"
+                expression="ifelse(lt(#dx,0),1,-1)" />
+            <IfCommand ifCondition="eq(#direction,1)*ne(#step,0)">
+                <Consequent>
+                    <VariableCommand name="rowSlot" expression="#appIndex%5" />
+                    <VariableCommand expression="#currentWidgetIndex+#step"
+                        nameExp="'r'+#rowSlot+'WidgetIndex'" />
+                    <VariableCommand name="dx" expression="#dx+#step*#stride" />
+                    <VariableCommand name="downX" condition="#dragging"
+                        expression="#downX-#step*#stride" />
+                    <VariableCommand name="snapFromX" condition="#settling"
+                        expression="#snapFromX+#step*#stride" />
+                    <VariableCommand name="snapToX" condition="#settling"
+                        expression="#snapToX+#step*#stride" />
+                    <FunctionCommand target="saveHorizontal" />
+                    <FunctionCommand target="syncCenter" />
+                    <FunctionCommand target="queryWindows" />
+                </Consequent>
+            </IfCommand>
+            <VariableCommand name="dy" condition="eq(#direction,2)*eq(#step,0)"
+                expression="max(-#rowH*0.45,min(#rowH*0.45,#dy))" />
+            <VariableCommand name="dx" condition="eq(#direction,1)*eq(#step,0)"
+                expression="max(-#stride*0.45,min(#stride*0.45,#dx))" />
+        </LoopCommand>
+    </Function>
+    <Function name="armDouble">
+        <VariableCommand name="doubleArmed"
+            expression="#firstTapValid*#centerDown*#tapEligible*not(#settling)*eq(#firstTapApp,#appIndex)*eq(#firstTapIndex,#currentWidgetIndex)*eqs(@firstTapPackage,@currentPackage)*eqs(@firstTapProvider,@currentProvider)" />
+    </Function>
+    <Function name="releaseGesture">
+        <IfCommand ifCondition="#dragging">
+            <Consequent>
+                <FunctionCommand target="moveGesture" />
+                <VariableCommand name="dragging" expression="0" />
+                <IfCommand ifCondition="#tapEligible*#centerDown*eq(#direction,0)">
+                    <Consequent>
+                        <FunctionCommand condition="#doubleArmed" target="confirmSelection" />
+                        <VariableCommand name="firstTapValid"
+                            expression="#currentReady*#appsReady*not(#rw_selected)" />
+                        <VariableCommand name="firstTapPackage" expression="@currentPackage"
+                            type="string" />
+                        <VariableCommand name="firstTapProvider" expression="@currentProvider"
+                            type="string" />
+                        <VariableCommand name="firstTapIndex" expression="#currentWidgetIndex" />
+                        <VariableCommand name="firstTapApp" expression="#appIndex" />
+                    </Consequent>
+                </IfCommand>
+                <VariableCommand name="firstTapValid"
+                    condition="not(#tapEligible*#centerDown*eq(#direction,0))" expression="0" />
+                <FunctionCommand condition="gt(#direction,0)" target="startSettle" />
+                <VariableCommand name="doubleArmed" expression="0" />
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="startSettle">
+        <VariableCommand name="snapFromX" expression="#dx*eq(#direction,1)" />
+        <VariableCommand name="snapFromY" expression="#dy*eq(#direction,2)" />
+        <VariableCommand name="snapToX"
+            expression="-round((-#dx-max(-2*#stride,min(2*#stride,#velocityX*140)))/#stride)*#stride*eq(#direction,1)" />
+        <VariableCommand name="snapToY"
+            expression="-round((-#dy-max(-2*#rowH,min(2*#rowH,#velocityY*140)))/#rowH)*#rowH*eq(#direction,2)" />
+        <VariableCommand name="settleDuration" expression="240" />
+        <VariableCommand name="settleStart" expression="#rw_touch_time" />
+        <VariableCommand name="settling" expression="1" />
+        <VariableCommand name="motionEpoch" expression="#motionEpoch+1" />
+    </Function>
+    <Function name="advanceSettle">
+        <IfCommand ifCondition="#settling">
+            <Consequent>
+                <VariableCommand name="settleProgress"
+                    expression="min(1,max(0,(#rw_frame_time-#settleStart)/max(1,#settleDuration)))" />
+                <VariableCommand name="dx"
+                    expression="#snapFromX+(#snapToX-#snapFromX)*(1-pow(1-#settleProgress,3))" />
+                <VariableCommand name="dy"
+                    expression="#snapFromY+(#snapToY-#snapFromY)*(1-pow(1-#settleProgress,3))" />
+                <FunctionCommand target="promoteMotion" />
+                <FunctionCommand target="queryWindows" />
+                <FunctionCommand condition="ge(#settleProgress,1)" target="finishTransition" />
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Function name="finishTransition">
+        <VariableCommand name="settling" expression="0" />
+        <VariableCommand name="dx" expression="0" />
+        <VariableCommand name="dy" expression="0" />
+        <VariableCommand name="direction" expression="0" />
+        <FunctionCommand target="queryWindows" />
+        <FunctionCommand target="syncCenter" />
+    </Function>
+    <Function name="cancelGesture">
+        <VariableCommand name="tapEligible" expression="0" />
+        <VariableCommand name="firstTapValid" expression="0" />
+        <VariableCommand name="doubleArmed" expression="0" />
+        <VariableCommand name="dragging" expression="0" />
+        <VariableCommand name="velocityX" expression="0" />
+        <VariableCommand name="velocityY" expression="0" />
+        <VariableCommand name="snapFromX" expression="#dx*eq(#direction,1)" />
+        <VariableCommand name="snapFromY" expression="#dy*eq(#direction,2)" />
+        <VariableCommand name="snapToX" expression="0" />
+        <VariableCommand name="snapToY" expression="0" />
+        <VariableCommand name="settleDuration" expression="240" />
+        <VariableCommand name="settleStart" expression="#rw_touch_time" />
+        <VariableCommand name="settling" expression="gt(#direction,0)" />
+        <VariableCommand name="motionEpoch" expression="#motionEpoch+1" />
+    </Function>
+    <Function name="confirmSelection">
+        <IfCommand
+            ifCondition="#doubleArmed*#tapEligible*#centerDown*not(#dragging+#settling)*#pickerVisible*#rw_ready*not(#rw_selected)*#displayReady*#appsReady*#currentReady*eqs(@firstTapProvider,@currentProvider)*eqs(@firstTapPackage,@currentPackage)*not(eqs(@rw_instance,''))*not(eqs(@currentProvider,''))">
+            <Consequent>
+                <IfCommand
+                    ifCondition="eq(#centerSlot,0)*eq(#r0v.loading,0)*eqs(@r0v.error,'')*eq(#r0v.offset,#r0vQOffset)*ge(#currentWidgetIndex-#r0v.offset,0)*lt(#currentWidgetIndex-#r0v.offset,#r0v.count)">
+                    <Consequent>
+                        <IfCommand
+                            ifCondition="eqs(@r0v.packageNames[#currentWidgetIndex-#r0v.offset],@currentPackage)*eqs(@r0v.providers[#currentWidgetIndex-#r0v.offset],@currentProvider)">
+                            <Consequent>
+                                <VariableCommand name="rw_provider" expression="@currentProvider"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_package" expression="@currentPackage"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_selected" expression="1" persist="true" />
+                                <VariableCommand name="requestSequence"
+                                    expression="#requestSequence+1" />
+                                <VariableCommand name="rw_user_request"
+                                    expression="@rw_instance+'|'+@rw_provider+'|'+#requestSequence"
+                                    type="string" />
+                            </Consequent>
+                        </IfCommand>
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="eq(#centerSlot,1)*eq(#r1v.loading,0)*eqs(@r1v.error,'')*eq(#r1v.offset,#r1vQOffset)*ge(#currentWidgetIndex-#r1v.offset,0)*lt(#currentWidgetIndex-#r1v.offset,#r1v.count)">
+                    <Consequent>
+                        <IfCommand
+                            ifCondition="eqs(@r1v.packageNames[#currentWidgetIndex-#r1v.offset],@currentPackage)*eqs(@r1v.providers[#currentWidgetIndex-#r1v.offset],@currentProvider)">
+                            <Consequent>
+                                <VariableCommand name="rw_provider" expression="@currentProvider"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_package" expression="@currentPackage"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_selected" expression="1" persist="true" />
+                                <VariableCommand name="requestSequence"
+                                    expression="#requestSequence+1" />
+                                <VariableCommand name="rw_user_request"
+                                    expression="@rw_instance+'|'+@rw_provider+'|'+#requestSequence"
+                                    type="string" />
+                            </Consequent>
+                        </IfCommand>
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="eq(#centerSlot,2)*eq(#r2v.loading,0)*eqs(@r2v.error,'')*eq(#r2v.offset,#r2vQOffset)*ge(#currentWidgetIndex-#r2v.offset,0)*lt(#currentWidgetIndex-#r2v.offset,#r2v.count)">
+                    <Consequent>
+                        <IfCommand
+                            ifCondition="eqs(@r2v.packageNames[#currentWidgetIndex-#r2v.offset],@currentPackage)*eqs(@r2v.providers[#currentWidgetIndex-#r2v.offset],@currentProvider)">
+                            <Consequent>
+                                <VariableCommand name="rw_provider" expression="@currentProvider"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_package" expression="@currentPackage"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_selected" expression="1" persist="true" />
+                                <VariableCommand name="requestSequence"
+                                    expression="#requestSequence+1" />
+                                <VariableCommand name="rw_user_request"
+                                    expression="@rw_instance+'|'+@rw_provider+'|'+#requestSequence"
+                                    type="string" />
+                            </Consequent>
+                        </IfCommand>
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="eq(#centerSlot,3)*eq(#r3v.loading,0)*eqs(@r3v.error,'')*eq(#r3v.offset,#r3vQOffset)*ge(#currentWidgetIndex-#r3v.offset,0)*lt(#currentWidgetIndex-#r3v.offset,#r3v.count)">
+                    <Consequent>
+                        <IfCommand
+                            ifCondition="eqs(@r3v.packageNames[#currentWidgetIndex-#r3v.offset],@currentPackage)*eqs(@r3v.providers[#currentWidgetIndex-#r3v.offset],@currentProvider)">
+                            <Consequent>
+                                <VariableCommand name="rw_provider" expression="@currentProvider"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_package" expression="@currentPackage"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_selected" expression="1" persist="true" />
+                                <VariableCommand name="requestSequence"
+                                    expression="#requestSequence+1" />
+                                <VariableCommand name="rw_user_request"
+                                    expression="@rw_instance+'|'+@rw_provider+'|'+#requestSequence"
+                                    type="string" />
+                            </Consequent>
+                        </IfCommand>
+                    </Consequent>
+                </IfCommand>
+                <IfCommand
+                    ifCondition="eq(#centerSlot,4)*eq(#r4v.loading,0)*eqs(@r4v.error,'')*eq(#r4v.offset,#r4vQOffset)*ge(#currentWidgetIndex-#r4v.offset,0)*lt(#currentWidgetIndex-#r4v.offset,#r4v.count)">
+                    <Consequent>
+                        <IfCommand
+                            ifCondition="eqs(@r4v.packageNames[#currentWidgetIndex-#r4v.offset],@currentPackage)*eqs(@r4v.providers[#currentWidgetIndex-#r4v.offset],@currentProvider)">
+                            <Consequent>
+                                <VariableCommand name="rw_provider" expression="@currentProvider"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_package" expression="@currentPackage"
+                                    persist="true" type="string" />
+                                <VariableCommand name="rw_selected" expression="1" persist="true" />
+                                <VariableCommand name="requestSequence"
+                                    expression="#requestSequence+1" />
+                                <VariableCommand name="rw_user_request"
+                                    expression="@rw_instance+'|'+@rw_provider+'|'+#requestSequence"
+                                    type="string" />
+                            </Consequent>
+                        </IfCommand>
+                    </Consequent>
+                </IfCommand>
+            </Consequent>
+        </IfCommand>
+    </Function>
+    <Rectangle name="opaqueBackground" fillColor="#FF10141C"
+        h="max(#screen_height,#display.height*#scale)" w="1080" x="0" y="0" />
+    <Group name="picker" clip="false" h="#safeH" visibility="#pickerVisible" w="#safeW" x="#safeX"
+        y="#safeY">
+        <Group name="appViewport" clip="true" h="#safeH" w="1080" x="-#safeX" y="0">
+            <!-- Read live displacement: motionTick can promote indices after offsetX/Y were sampled.
+                 Cached absolute columns own previews in v > l > n order, including old limit=0 neighbours.
+                 Do not hide valid v transition data merely because its next request window changed. -->
+            <Group name="appTrack" x="#safeX" y="#dy*eq(#direction,2)">
+                <Group name="row0" clip="false" h="#rowH"
+                    visibility="#r0Valid*ge(#r0AppIndex,#appIndex-2)*le(#r0AppIndex,#appIndex+2)"
+                    w="#safeW" y="#centerTop+(#r0AppIndex-#appIndex)*#rowH">
+                    <Rectangle fillColor="#FF171E29" h="#rowH-4*#scale" w="#safeW" />
+                    <Text align="center" color="#FFFFFFFF" size="#fontSize" textExp="@r0Name"
+                        w="#safeW-12*#scale" x="#safeW/2" y="4*#scale" />
+                    <Group name="horizontalViewport0" clip="true" h="#rowH" w="1080" x="-#safeX"
+                        y="0">
+                        <Group name="widgetTrack0"
+                            x="#safeX+ifelse(eq(#r0AppIndex,#appIndex),#dx*eq(#direction,1),0)">
+                            <Image name="r0lPreview0" align="center" alignV="center"
+                                h="#r0lPreview0.bmp_height*min(#previewBoxW/max(1,#r0lPreview0.bmp_width),#previewBoxH/max(1,#r0lPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0lReady,'r0lBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r0lReady*eqs(@r0lCachePackage,@r0Package)*lt(0,#r0lCacheCount)*not(#r0vReady*eqs(@r0vCachePackage,@r0Package)*ge(#r0lCacheOffset,#r0vCacheOffset)*lt(#r0lCacheOffset,#r0vCacheOffset+#r0vCacheCount))"
+                                w="#r0lPreview0.bmp_width*min(#previewBoxW/max(1,#r0lPreview0.bmp_width),#previewBoxH/max(1,#r0lPreview0.bmp_height))"
+                                x="#safeW/2+(#r0lCacheOffset+0-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview0" align="center" alignV="center"
+                                h="#r0vPreview0.bmp_height*min(#previewBoxW/max(1,#r0vPreview0.bmp_width),#previewBoxH/max(1,#r0vPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(0,#r0vCacheCount)"
+                                w="#r0vPreview0.bmp_width*min(#previewBoxW/max(1,#r0vPreview0.bmp_width),#previewBoxH/max(1,#r0vPreview0.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+0-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview1" align="center" alignV="center"
+                                h="#r0vPreview1.bmp_height*min(#previewBoxW/max(1,#r0vPreview1.bmp_width),#previewBoxH/max(1,#r0vPreview1.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[1]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(1,#r0vCacheCount)"
+                                w="#r0vPreview1.bmp_width*min(#previewBoxW/max(1,#r0vPreview1.bmp_width),#previewBoxH/max(1,#r0vPreview1.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+1-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview2" align="center" alignV="center"
+                                h="#r0vPreview2.bmp_height*min(#previewBoxW/max(1,#r0vPreview2.bmp_width),#previewBoxH/max(1,#r0vPreview2.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[2]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(2,#r0vCacheCount)"
+                                w="#r0vPreview2.bmp_width*min(#previewBoxW/max(1,#r0vPreview2.bmp_width),#previewBoxH/max(1,#r0vPreview2.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+2-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview3" align="center" alignV="center"
+                                h="#r0vPreview3.bmp_height*min(#previewBoxW/max(1,#r0vPreview3.bmp_width),#previewBoxH/max(1,#r0vPreview3.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[3]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(3,#r0vCacheCount)"
+                                w="#r0vPreview3.bmp_width*min(#previewBoxW/max(1,#r0vPreview3.bmp_width),#previewBoxH/max(1,#r0vPreview3.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+3-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview4" align="center" alignV="center"
+                                h="#r0vPreview4.bmp_height*min(#previewBoxW/max(1,#r0vPreview4.bmp_width),#previewBoxH/max(1,#r0vPreview4.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[4]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(4,#r0vCacheCount)"
+                                w="#r0vPreview4.bmp_width*min(#previewBoxW/max(1,#r0vPreview4.bmp_width),#previewBoxH/max(1,#r0vPreview4.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+4-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview5" align="center" alignV="center"
+                                h="#r0vPreview5.bmp_height*min(#previewBoxW/max(1,#r0vPreview5.bmp_width),#previewBoxH/max(1,#r0vPreview5.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[5]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(5,#r0vCacheCount)"
+                                w="#r0vPreview5.bmp_width*min(#previewBoxW/max(1,#r0vPreview5.bmp_width),#previewBoxH/max(1,#r0vPreview5.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+5-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview6" align="center" alignV="center"
+                                h="#r0vPreview6.bmp_height*min(#previewBoxW/max(1,#r0vPreview6.bmp_width),#previewBoxH/max(1,#r0vPreview6.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[6]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(6,#r0vCacheCount)"
+                                w="#r0vPreview6.bmp_width*min(#previewBoxW/max(1,#r0vPreview6.bmp_width),#previewBoxH/max(1,#r0vPreview6.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+6-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview7" align="center" alignV="center"
+                                h="#r0vPreview7.bmp_height*min(#previewBoxW/max(1,#r0vPreview7.bmp_width),#previewBoxH/max(1,#r0vPreview7.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[7]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(7,#r0vCacheCount)"
+                                w="#r0vPreview7.bmp_width*min(#previewBoxW/max(1,#r0vPreview7.bmp_width),#previewBoxH/max(1,#r0vPreview7.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+7-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview8" align="center" alignV="center"
+                                h="#r0vPreview8.bmp_height*min(#previewBoxW/max(1,#r0vPreview8.bmp_width),#previewBoxH/max(1,#r0vPreview8.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[8]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(8,#r0vCacheCount)"
+                                w="#r0vPreview8.bmp_width*min(#previewBoxW/max(1,#r0vPreview8.bmp_width),#previewBoxH/max(1,#r0vPreview8.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+8-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview9" align="center" alignV="center"
+                                h="#r0vPreview9.bmp_height*min(#previewBoxW/max(1,#r0vPreview9.bmp_width),#previewBoxH/max(1,#r0vPreview9.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[9]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(9,#r0vCacheCount)"
+                                w="#r0vPreview9.bmp_width*min(#previewBoxW/max(1,#r0vPreview9.bmp_width),#previewBoxH/max(1,#r0vPreview9.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+9-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview10" align="center" alignV="center"
+                                h="#r0vPreview10.bmp_height*min(#previewBoxW/max(1,#r0vPreview10.bmp_width),#previewBoxH/max(1,#r0vPreview10.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[10]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(10,#r0vCacheCount)"
+                                w="#r0vPreview10.bmp_width*min(#previewBoxW/max(1,#r0vPreview10.bmp_width),#previewBoxH/max(1,#r0vPreview10.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+10-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview11" align="center" alignV="center"
+                                h="#r0vPreview11.bmp_height*min(#previewBoxW/max(1,#r0vPreview11.bmp_width),#previewBoxH/max(1,#r0vPreview11.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[11]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(11,#r0vCacheCount)"
+                                w="#r0vPreview11.bmp_width*min(#previewBoxW/max(1,#r0vPreview11.bmp_width),#previewBoxH/max(1,#r0vPreview11.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+11-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview12" align="center" alignV="center"
+                                h="#r0vPreview12.bmp_height*min(#previewBoxW/max(1,#r0vPreview12.bmp_width),#previewBoxH/max(1,#r0vPreview12.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[12]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(12,#r0vCacheCount)"
+                                w="#r0vPreview12.bmp_width*min(#previewBoxW/max(1,#r0vPreview12.bmp_width),#previewBoxH/max(1,#r0vPreview12.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+12-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview13" align="center" alignV="center"
+                                h="#r0vPreview13.bmp_height*min(#previewBoxW/max(1,#r0vPreview13.bmp_width),#previewBoxH/max(1,#r0vPreview13.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[13]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(13,#r0vCacheCount)"
+                                w="#r0vPreview13.bmp_width*min(#previewBoxW/max(1,#r0vPreview13.bmp_width),#previewBoxH/max(1,#r0vPreview13.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+13-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0vPreview14" align="center" alignV="center"
+                                h="#r0vPreview14.bmp_height*min(#previewBoxW/max(1,#r0vPreview14.bmp_width),#previewBoxH/max(1,#r0vPreview14.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0vReady,'r0vBitmap[14]','')" srcType="BitmapVar"
+                                visibility="#r0vReady*eqs(@r0vCachePackage,@r0Package)*lt(14,#r0vCacheCount)"
+                                w="#r0vPreview14.bmp_width*min(#previewBoxW/max(1,#r0vPreview14.bmp_width),#previewBoxH/max(1,#r0vPreview14.bmp_height))"
+                                x="#safeW/2+(#r0vCacheOffset+14-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r0nPreview0" align="center" alignV="center"
+                                h="#r0nPreview0.bmp_height*min(#previewBoxW/max(1,#r0nPreview0.bmp_width),#previewBoxH/max(1,#r0nPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r0nReady,'r0nBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r0nReady*eqs(@r0nCachePackage,@r0Package)*lt(0,#r0nCacheCount)*not(#r0vReady*eqs(@r0vCachePackage,@r0Package)*ge(#r0nCacheOffset,#r0vCacheOffset)*lt(#r0nCacheOffset,#r0vCacheOffset+#r0vCacheCount))*not(#r0lReady*eqs(@r0lCachePackage,@r0Package)*lt(0,#r0lCacheCount)*eq(#r0nCacheOffset,#r0lCacheOffset))"
+                                w="#r0nPreview0.bmp_width*min(#previewBoxW/max(1,#r0nPreview0.bmp_width),#previewBoxH/max(1,#r0nPreview0.bmp_height))"
+                                x="#safeW/2+(#r0nCacheOffset+0-#r0WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                        </Group>
+                    </Group>
+                    <Text align="center" color="#FFE4EEFF" size="#fontSize*0.7"
+                        textExp="#r0WidgetNumber+' / '+#r0WidgetCount" w="#safeW-12*#scale"
+                        x="#safeW/2" y="#rowH*0.82" />
+                    <Text align="center" color="#FFCBD9EF" size="#fontSize*0.7" text="预览加载中"
+                        visibility="not(#r0vReady)" x="#safeW/2" y="#rowH*0.42" />
+                </Group>
+                <Group name="row1" clip="false" h="#rowH"
+                    visibility="#r1Valid*ge(#r1AppIndex,#appIndex-2)*le(#r1AppIndex,#appIndex+2)"
+                    w="#safeW" y="#centerTop+(#r1AppIndex-#appIndex)*#rowH">
+                    <Rectangle fillColor="#FF171E29" h="#rowH-4*#scale" w="#safeW" />
+                    <Text align="center" color="#FFFFFFFF" size="#fontSize" textExp="@r1Name"
+                        w="#safeW-12*#scale" x="#safeW/2" y="4*#scale" />
+                    <Group name="horizontalViewport1" clip="true" h="#rowH" w="1080" x="-#safeX"
+                        y="0">
+                        <Group name="widgetTrack1"
+                            x="#safeX+ifelse(eq(#r1AppIndex,#appIndex),#dx*eq(#direction,1),0)">
+                            <Image name="r1lPreview0" align="center" alignV="center"
+                                h="#r1lPreview0.bmp_height*min(#previewBoxW/max(1,#r1lPreview0.bmp_width),#previewBoxH/max(1,#r1lPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1lReady,'r1lBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r1lReady*eqs(@r1lCachePackage,@r1Package)*lt(0,#r1lCacheCount)*not(#r1vReady*eqs(@r1vCachePackage,@r1Package)*ge(#r1lCacheOffset,#r1vCacheOffset)*lt(#r1lCacheOffset,#r1vCacheOffset+#r1vCacheCount))"
+                                w="#r1lPreview0.bmp_width*min(#previewBoxW/max(1,#r1lPreview0.bmp_width),#previewBoxH/max(1,#r1lPreview0.bmp_height))"
+                                x="#safeW/2+(#r1lCacheOffset+0-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview0" align="center" alignV="center"
+                                h="#r1vPreview0.bmp_height*min(#previewBoxW/max(1,#r1vPreview0.bmp_width),#previewBoxH/max(1,#r1vPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(0,#r1vCacheCount)"
+                                w="#r1vPreview0.bmp_width*min(#previewBoxW/max(1,#r1vPreview0.bmp_width),#previewBoxH/max(1,#r1vPreview0.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+0-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview1" align="center" alignV="center"
+                                h="#r1vPreview1.bmp_height*min(#previewBoxW/max(1,#r1vPreview1.bmp_width),#previewBoxH/max(1,#r1vPreview1.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[1]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(1,#r1vCacheCount)"
+                                w="#r1vPreview1.bmp_width*min(#previewBoxW/max(1,#r1vPreview1.bmp_width),#previewBoxH/max(1,#r1vPreview1.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+1-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview2" align="center" alignV="center"
+                                h="#r1vPreview2.bmp_height*min(#previewBoxW/max(1,#r1vPreview2.bmp_width),#previewBoxH/max(1,#r1vPreview2.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[2]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(2,#r1vCacheCount)"
+                                w="#r1vPreview2.bmp_width*min(#previewBoxW/max(1,#r1vPreview2.bmp_width),#previewBoxH/max(1,#r1vPreview2.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+2-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview3" align="center" alignV="center"
+                                h="#r1vPreview3.bmp_height*min(#previewBoxW/max(1,#r1vPreview3.bmp_width),#previewBoxH/max(1,#r1vPreview3.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[3]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(3,#r1vCacheCount)"
+                                w="#r1vPreview3.bmp_width*min(#previewBoxW/max(1,#r1vPreview3.bmp_width),#previewBoxH/max(1,#r1vPreview3.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+3-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview4" align="center" alignV="center"
+                                h="#r1vPreview4.bmp_height*min(#previewBoxW/max(1,#r1vPreview4.bmp_width),#previewBoxH/max(1,#r1vPreview4.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[4]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(4,#r1vCacheCount)"
+                                w="#r1vPreview4.bmp_width*min(#previewBoxW/max(1,#r1vPreview4.bmp_width),#previewBoxH/max(1,#r1vPreview4.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+4-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview5" align="center" alignV="center"
+                                h="#r1vPreview5.bmp_height*min(#previewBoxW/max(1,#r1vPreview5.bmp_width),#previewBoxH/max(1,#r1vPreview5.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[5]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(5,#r1vCacheCount)"
+                                w="#r1vPreview5.bmp_width*min(#previewBoxW/max(1,#r1vPreview5.bmp_width),#previewBoxH/max(1,#r1vPreview5.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+5-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview6" align="center" alignV="center"
+                                h="#r1vPreview6.bmp_height*min(#previewBoxW/max(1,#r1vPreview6.bmp_width),#previewBoxH/max(1,#r1vPreview6.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[6]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(6,#r1vCacheCount)"
+                                w="#r1vPreview6.bmp_width*min(#previewBoxW/max(1,#r1vPreview6.bmp_width),#previewBoxH/max(1,#r1vPreview6.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+6-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview7" align="center" alignV="center"
+                                h="#r1vPreview7.bmp_height*min(#previewBoxW/max(1,#r1vPreview7.bmp_width),#previewBoxH/max(1,#r1vPreview7.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[7]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(7,#r1vCacheCount)"
+                                w="#r1vPreview7.bmp_width*min(#previewBoxW/max(1,#r1vPreview7.bmp_width),#previewBoxH/max(1,#r1vPreview7.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+7-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview8" align="center" alignV="center"
+                                h="#r1vPreview8.bmp_height*min(#previewBoxW/max(1,#r1vPreview8.bmp_width),#previewBoxH/max(1,#r1vPreview8.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[8]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(8,#r1vCacheCount)"
+                                w="#r1vPreview8.bmp_width*min(#previewBoxW/max(1,#r1vPreview8.bmp_width),#previewBoxH/max(1,#r1vPreview8.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+8-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview9" align="center" alignV="center"
+                                h="#r1vPreview9.bmp_height*min(#previewBoxW/max(1,#r1vPreview9.bmp_width),#previewBoxH/max(1,#r1vPreview9.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[9]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(9,#r1vCacheCount)"
+                                w="#r1vPreview9.bmp_width*min(#previewBoxW/max(1,#r1vPreview9.bmp_width),#previewBoxH/max(1,#r1vPreview9.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+9-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview10" align="center" alignV="center"
+                                h="#r1vPreview10.bmp_height*min(#previewBoxW/max(1,#r1vPreview10.bmp_width),#previewBoxH/max(1,#r1vPreview10.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[10]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(10,#r1vCacheCount)"
+                                w="#r1vPreview10.bmp_width*min(#previewBoxW/max(1,#r1vPreview10.bmp_width),#previewBoxH/max(1,#r1vPreview10.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+10-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview11" align="center" alignV="center"
+                                h="#r1vPreview11.bmp_height*min(#previewBoxW/max(1,#r1vPreview11.bmp_width),#previewBoxH/max(1,#r1vPreview11.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[11]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(11,#r1vCacheCount)"
+                                w="#r1vPreview11.bmp_width*min(#previewBoxW/max(1,#r1vPreview11.bmp_width),#previewBoxH/max(1,#r1vPreview11.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+11-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview12" align="center" alignV="center"
+                                h="#r1vPreview12.bmp_height*min(#previewBoxW/max(1,#r1vPreview12.bmp_width),#previewBoxH/max(1,#r1vPreview12.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[12]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(12,#r1vCacheCount)"
+                                w="#r1vPreview12.bmp_width*min(#previewBoxW/max(1,#r1vPreview12.bmp_width),#previewBoxH/max(1,#r1vPreview12.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+12-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview13" align="center" alignV="center"
+                                h="#r1vPreview13.bmp_height*min(#previewBoxW/max(1,#r1vPreview13.bmp_width),#previewBoxH/max(1,#r1vPreview13.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[13]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(13,#r1vCacheCount)"
+                                w="#r1vPreview13.bmp_width*min(#previewBoxW/max(1,#r1vPreview13.bmp_width),#previewBoxH/max(1,#r1vPreview13.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+13-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1vPreview14" align="center" alignV="center"
+                                h="#r1vPreview14.bmp_height*min(#previewBoxW/max(1,#r1vPreview14.bmp_width),#previewBoxH/max(1,#r1vPreview14.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1vReady,'r1vBitmap[14]','')" srcType="BitmapVar"
+                                visibility="#r1vReady*eqs(@r1vCachePackage,@r1Package)*lt(14,#r1vCacheCount)"
+                                w="#r1vPreview14.bmp_width*min(#previewBoxW/max(1,#r1vPreview14.bmp_width),#previewBoxH/max(1,#r1vPreview14.bmp_height))"
+                                x="#safeW/2+(#r1vCacheOffset+14-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r1nPreview0" align="center" alignV="center"
+                                h="#r1nPreview0.bmp_height*min(#previewBoxW/max(1,#r1nPreview0.bmp_width),#previewBoxH/max(1,#r1nPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r1nReady,'r1nBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r1nReady*eqs(@r1nCachePackage,@r1Package)*lt(0,#r1nCacheCount)*not(#r1vReady*eqs(@r1vCachePackage,@r1Package)*ge(#r1nCacheOffset,#r1vCacheOffset)*lt(#r1nCacheOffset,#r1vCacheOffset+#r1vCacheCount))*not(#r1lReady*eqs(@r1lCachePackage,@r1Package)*lt(0,#r1lCacheCount)*eq(#r1nCacheOffset,#r1lCacheOffset))"
+                                w="#r1nPreview0.bmp_width*min(#previewBoxW/max(1,#r1nPreview0.bmp_width),#previewBoxH/max(1,#r1nPreview0.bmp_height))"
+                                x="#safeW/2+(#r1nCacheOffset+0-#r1WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                        </Group>
+                    </Group>
+                    <Text align="center" color="#FFE4EEFF" size="#fontSize*0.7"
+                        textExp="#r1WidgetNumber+' / '+#r1WidgetCount" w="#safeW-12*#scale"
+                        x="#safeW/2" y="#rowH*0.82" />
+                    <Text align="center" color="#FFCBD9EF" size="#fontSize*0.7" text="预览加载中"
+                        visibility="not(#r1vReady)" x="#safeW/2" y="#rowH*0.42" />
+                </Group>
+                <Group name="row2" clip="false" h="#rowH"
+                    visibility="#r2Valid*ge(#r2AppIndex,#appIndex-2)*le(#r2AppIndex,#appIndex+2)"
+                    w="#safeW" y="#centerTop+(#r2AppIndex-#appIndex)*#rowH">
+                    <Rectangle fillColor="#FF171E29" h="#rowH-4*#scale" w="#safeW" />
+                    <Text align="center" color="#FFFFFFFF" size="#fontSize" textExp="@r2Name"
+                        w="#safeW-12*#scale" x="#safeW/2" y="4*#scale" />
+                    <Group name="horizontalViewport2" clip="true" h="#rowH" w="1080" x="-#safeX"
+                        y="0">
+                        <Group name="widgetTrack2"
+                            x="#safeX+ifelse(eq(#r2AppIndex,#appIndex),#dx*eq(#direction,1),0)">
+                            <Image name="r2lPreview0" align="center" alignV="center"
+                                h="#r2lPreview0.bmp_height*min(#previewBoxW/max(1,#r2lPreview0.bmp_width),#previewBoxH/max(1,#r2lPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2lReady,'r2lBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r2lReady*eqs(@r2lCachePackage,@r2Package)*lt(0,#r2lCacheCount)*not(#r2vReady*eqs(@r2vCachePackage,@r2Package)*ge(#r2lCacheOffset,#r2vCacheOffset)*lt(#r2lCacheOffset,#r2vCacheOffset+#r2vCacheCount))"
+                                w="#r2lPreview0.bmp_width*min(#previewBoxW/max(1,#r2lPreview0.bmp_width),#previewBoxH/max(1,#r2lPreview0.bmp_height))"
+                                x="#safeW/2+(#r2lCacheOffset+0-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview0" align="center" alignV="center"
+                                h="#r2vPreview0.bmp_height*min(#previewBoxW/max(1,#r2vPreview0.bmp_width),#previewBoxH/max(1,#r2vPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(0,#r2vCacheCount)"
+                                w="#r2vPreview0.bmp_width*min(#previewBoxW/max(1,#r2vPreview0.bmp_width),#previewBoxH/max(1,#r2vPreview0.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+0-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview1" align="center" alignV="center"
+                                h="#r2vPreview1.bmp_height*min(#previewBoxW/max(1,#r2vPreview1.bmp_width),#previewBoxH/max(1,#r2vPreview1.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[1]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(1,#r2vCacheCount)"
+                                w="#r2vPreview1.bmp_width*min(#previewBoxW/max(1,#r2vPreview1.bmp_width),#previewBoxH/max(1,#r2vPreview1.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+1-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview2" align="center" alignV="center"
+                                h="#r2vPreview2.bmp_height*min(#previewBoxW/max(1,#r2vPreview2.bmp_width),#previewBoxH/max(1,#r2vPreview2.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[2]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(2,#r2vCacheCount)"
+                                w="#r2vPreview2.bmp_width*min(#previewBoxW/max(1,#r2vPreview2.bmp_width),#previewBoxH/max(1,#r2vPreview2.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+2-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview3" align="center" alignV="center"
+                                h="#r2vPreview3.bmp_height*min(#previewBoxW/max(1,#r2vPreview3.bmp_width),#previewBoxH/max(1,#r2vPreview3.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[3]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(3,#r2vCacheCount)"
+                                w="#r2vPreview3.bmp_width*min(#previewBoxW/max(1,#r2vPreview3.bmp_width),#previewBoxH/max(1,#r2vPreview3.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+3-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview4" align="center" alignV="center"
+                                h="#r2vPreview4.bmp_height*min(#previewBoxW/max(1,#r2vPreview4.bmp_width),#previewBoxH/max(1,#r2vPreview4.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[4]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(4,#r2vCacheCount)"
+                                w="#r2vPreview4.bmp_width*min(#previewBoxW/max(1,#r2vPreview4.bmp_width),#previewBoxH/max(1,#r2vPreview4.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+4-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview5" align="center" alignV="center"
+                                h="#r2vPreview5.bmp_height*min(#previewBoxW/max(1,#r2vPreview5.bmp_width),#previewBoxH/max(1,#r2vPreview5.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[5]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(5,#r2vCacheCount)"
+                                w="#r2vPreview5.bmp_width*min(#previewBoxW/max(1,#r2vPreview5.bmp_width),#previewBoxH/max(1,#r2vPreview5.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+5-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview6" align="center" alignV="center"
+                                h="#r2vPreview6.bmp_height*min(#previewBoxW/max(1,#r2vPreview6.bmp_width),#previewBoxH/max(1,#r2vPreview6.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[6]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(6,#r2vCacheCount)"
+                                w="#r2vPreview6.bmp_width*min(#previewBoxW/max(1,#r2vPreview6.bmp_width),#previewBoxH/max(1,#r2vPreview6.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+6-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview7" align="center" alignV="center"
+                                h="#r2vPreview7.bmp_height*min(#previewBoxW/max(1,#r2vPreview7.bmp_width),#previewBoxH/max(1,#r2vPreview7.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[7]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(7,#r2vCacheCount)"
+                                w="#r2vPreview7.bmp_width*min(#previewBoxW/max(1,#r2vPreview7.bmp_width),#previewBoxH/max(1,#r2vPreview7.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+7-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview8" align="center" alignV="center"
+                                h="#r2vPreview8.bmp_height*min(#previewBoxW/max(1,#r2vPreview8.bmp_width),#previewBoxH/max(1,#r2vPreview8.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[8]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(8,#r2vCacheCount)"
+                                w="#r2vPreview8.bmp_width*min(#previewBoxW/max(1,#r2vPreview8.bmp_width),#previewBoxH/max(1,#r2vPreview8.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+8-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview9" align="center" alignV="center"
+                                h="#r2vPreview9.bmp_height*min(#previewBoxW/max(1,#r2vPreview9.bmp_width),#previewBoxH/max(1,#r2vPreview9.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[9]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(9,#r2vCacheCount)"
+                                w="#r2vPreview9.bmp_width*min(#previewBoxW/max(1,#r2vPreview9.bmp_width),#previewBoxH/max(1,#r2vPreview9.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+9-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview10" align="center" alignV="center"
+                                h="#r2vPreview10.bmp_height*min(#previewBoxW/max(1,#r2vPreview10.bmp_width),#previewBoxH/max(1,#r2vPreview10.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[10]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(10,#r2vCacheCount)"
+                                w="#r2vPreview10.bmp_width*min(#previewBoxW/max(1,#r2vPreview10.bmp_width),#previewBoxH/max(1,#r2vPreview10.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+10-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview11" align="center" alignV="center"
+                                h="#r2vPreview11.bmp_height*min(#previewBoxW/max(1,#r2vPreview11.bmp_width),#previewBoxH/max(1,#r2vPreview11.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[11]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(11,#r2vCacheCount)"
+                                w="#r2vPreview11.bmp_width*min(#previewBoxW/max(1,#r2vPreview11.bmp_width),#previewBoxH/max(1,#r2vPreview11.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+11-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview12" align="center" alignV="center"
+                                h="#r2vPreview12.bmp_height*min(#previewBoxW/max(1,#r2vPreview12.bmp_width),#previewBoxH/max(1,#r2vPreview12.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[12]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(12,#r2vCacheCount)"
+                                w="#r2vPreview12.bmp_width*min(#previewBoxW/max(1,#r2vPreview12.bmp_width),#previewBoxH/max(1,#r2vPreview12.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+12-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview13" align="center" alignV="center"
+                                h="#r2vPreview13.bmp_height*min(#previewBoxW/max(1,#r2vPreview13.bmp_width),#previewBoxH/max(1,#r2vPreview13.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[13]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(13,#r2vCacheCount)"
+                                w="#r2vPreview13.bmp_width*min(#previewBoxW/max(1,#r2vPreview13.bmp_width),#previewBoxH/max(1,#r2vPreview13.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+13-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2vPreview14" align="center" alignV="center"
+                                h="#r2vPreview14.bmp_height*min(#previewBoxW/max(1,#r2vPreview14.bmp_width),#previewBoxH/max(1,#r2vPreview14.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2vReady,'r2vBitmap[14]','')" srcType="BitmapVar"
+                                visibility="#r2vReady*eqs(@r2vCachePackage,@r2Package)*lt(14,#r2vCacheCount)"
+                                w="#r2vPreview14.bmp_width*min(#previewBoxW/max(1,#r2vPreview14.bmp_width),#previewBoxH/max(1,#r2vPreview14.bmp_height))"
+                                x="#safeW/2+(#r2vCacheOffset+14-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r2nPreview0" align="center" alignV="center"
+                                h="#r2nPreview0.bmp_height*min(#previewBoxW/max(1,#r2nPreview0.bmp_width),#previewBoxH/max(1,#r2nPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r2nReady,'r2nBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r2nReady*eqs(@r2nCachePackage,@r2Package)*lt(0,#r2nCacheCount)*not(#r2vReady*eqs(@r2vCachePackage,@r2Package)*ge(#r2nCacheOffset,#r2vCacheOffset)*lt(#r2nCacheOffset,#r2vCacheOffset+#r2vCacheCount))*not(#r2lReady*eqs(@r2lCachePackage,@r2Package)*lt(0,#r2lCacheCount)*eq(#r2nCacheOffset,#r2lCacheOffset))"
+                                w="#r2nPreview0.bmp_width*min(#previewBoxW/max(1,#r2nPreview0.bmp_width),#previewBoxH/max(1,#r2nPreview0.bmp_height))"
+                                x="#safeW/2+(#r2nCacheOffset+0-#r2WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                        </Group>
+                    </Group>
+                    <Text align="center" color="#FFE4EEFF" size="#fontSize*0.7"
+                        textExp="#r2WidgetNumber+' / '+#r2WidgetCount" w="#safeW-12*#scale"
+                        x="#safeW/2" y="#rowH*0.82" />
+                    <Text align="center" color="#FFCBD9EF" size="#fontSize*0.7" text="预览加载中"
+                        visibility="not(#r2vReady)" x="#safeW/2" y="#rowH*0.42" />
+                </Group>
+                <Group name="row3" clip="false" h="#rowH"
+                    visibility="#r3Valid*ge(#r3AppIndex,#appIndex-2)*le(#r3AppIndex,#appIndex+2)"
+                    w="#safeW" y="#centerTop+(#r3AppIndex-#appIndex)*#rowH">
+                    <Rectangle fillColor="#FF171E29" h="#rowH-4*#scale" w="#safeW" />
+                    <Text align="center" color="#FFFFFFFF" size="#fontSize" textExp="@r3Name"
+                        w="#safeW-12*#scale" x="#safeW/2" y="4*#scale" />
+                    <Group name="horizontalViewport3" clip="true" h="#rowH" w="1080" x="-#safeX"
+                        y="0">
+                        <Group name="widgetTrack3"
+                            x="#safeX+ifelse(eq(#r3AppIndex,#appIndex),#dx*eq(#direction,1),0)">
+                            <Image name="r3lPreview0" align="center" alignV="center"
+                                h="#r3lPreview0.bmp_height*min(#previewBoxW/max(1,#r3lPreview0.bmp_width),#previewBoxH/max(1,#r3lPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3lReady,'r3lBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r3lReady*eqs(@r3lCachePackage,@r3Package)*lt(0,#r3lCacheCount)*not(#r3vReady*eqs(@r3vCachePackage,@r3Package)*ge(#r3lCacheOffset,#r3vCacheOffset)*lt(#r3lCacheOffset,#r3vCacheOffset+#r3vCacheCount))"
+                                w="#r3lPreview0.bmp_width*min(#previewBoxW/max(1,#r3lPreview0.bmp_width),#previewBoxH/max(1,#r3lPreview0.bmp_height))"
+                                x="#safeW/2+(#r3lCacheOffset+0-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview0" align="center" alignV="center"
+                                h="#r3vPreview0.bmp_height*min(#previewBoxW/max(1,#r3vPreview0.bmp_width),#previewBoxH/max(1,#r3vPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(0,#r3vCacheCount)"
+                                w="#r3vPreview0.bmp_width*min(#previewBoxW/max(1,#r3vPreview0.bmp_width),#previewBoxH/max(1,#r3vPreview0.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+0-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview1" align="center" alignV="center"
+                                h="#r3vPreview1.bmp_height*min(#previewBoxW/max(1,#r3vPreview1.bmp_width),#previewBoxH/max(1,#r3vPreview1.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[1]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(1,#r3vCacheCount)"
+                                w="#r3vPreview1.bmp_width*min(#previewBoxW/max(1,#r3vPreview1.bmp_width),#previewBoxH/max(1,#r3vPreview1.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+1-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview2" align="center" alignV="center"
+                                h="#r3vPreview2.bmp_height*min(#previewBoxW/max(1,#r3vPreview2.bmp_width),#previewBoxH/max(1,#r3vPreview2.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[2]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(2,#r3vCacheCount)"
+                                w="#r3vPreview2.bmp_width*min(#previewBoxW/max(1,#r3vPreview2.bmp_width),#previewBoxH/max(1,#r3vPreview2.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+2-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview3" align="center" alignV="center"
+                                h="#r3vPreview3.bmp_height*min(#previewBoxW/max(1,#r3vPreview3.bmp_width),#previewBoxH/max(1,#r3vPreview3.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[3]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(3,#r3vCacheCount)"
+                                w="#r3vPreview3.bmp_width*min(#previewBoxW/max(1,#r3vPreview3.bmp_width),#previewBoxH/max(1,#r3vPreview3.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+3-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview4" align="center" alignV="center"
+                                h="#r3vPreview4.bmp_height*min(#previewBoxW/max(1,#r3vPreview4.bmp_width),#previewBoxH/max(1,#r3vPreview4.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[4]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(4,#r3vCacheCount)"
+                                w="#r3vPreview4.bmp_width*min(#previewBoxW/max(1,#r3vPreview4.bmp_width),#previewBoxH/max(1,#r3vPreview4.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+4-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview5" align="center" alignV="center"
+                                h="#r3vPreview5.bmp_height*min(#previewBoxW/max(1,#r3vPreview5.bmp_width),#previewBoxH/max(1,#r3vPreview5.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[5]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(5,#r3vCacheCount)"
+                                w="#r3vPreview5.bmp_width*min(#previewBoxW/max(1,#r3vPreview5.bmp_width),#previewBoxH/max(1,#r3vPreview5.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+5-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview6" align="center" alignV="center"
+                                h="#r3vPreview6.bmp_height*min(#previewBoxW/max(1,#r3vPreview6.bmp_width),#previewBoxH/max(1,#r3vPreview6.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[6]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(6,#r3vCacheCount)"
+                                w="#r3vPreview6.bmp_width*min(#previewBoxW/max(1,#r3vPreview6.bmp_width),#previewBoxH/max(1,#r3vPreview6.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+6-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview7" align="center" alignV="center"
+                                h="#r3vPreview7.bmp_height*min(#previewBoxW/max(1,#r3vPreview7.bmp_width),#previewBoxH/max(1,#r3vPreview7.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[7]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(7,#r3vCacheCount)"
+                                w="#r3vPreview7.bmp_width*min(#previewBoxW/max(1,#r3vPreview7.bmp_width),#previewBoxH/max(1,#r3vPreview7.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+7-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview8" align="center" alignV="center"
+                                h="#r3vPreview8.bmp_height*min(#previewBoxW/max(1,#r3vPreview8.bmp_width),#previewBoxH/max(1,#r3vPreview8.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[8]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(8,#r3vCacheCount)"
+                                w="#r3vPreview8.bmp_width*min(#previewBoxW/max(1,#r3vPreview8.bmp_width),#previewBoxH/max(1,#r3vPreview8.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+8-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview9" align="center" alignV="center"
+                                h="#r3vPreview9.bmp_height*min(#previewBoxW/max(1,#r3vPreview9.bmp_width),#previewBoxH/max(1,#r3vPreview9.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[9]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(9,#r3vCacheCount)"
+                                w="#r3vPreview9.bmp_width*min(#previewBoxW/max(1,#r3vPreview9.bmp_width),#previewBoxH/max(1,#r3vPreview9.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+9-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview10" align="center" alignV="center"
+                                h="#r3vPreview10.bmp_height*min(#previewBoxW/max(1,#r3vPreview10.bmp_width),#previewBoxH/max(1,#r3vPreview10.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[10]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(10,#r3vCacheCount)"
+                                w="#r3vPreview10.bmp_width*min(#previewBoxW/max(1,#r3vPreview10.bmp_width),#previewBoxH/max(1,#r3vPreview10.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+10-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview11" align="center" alignV="center"
+                                h="#r3vPreview11.bmp_height*min(#previewBoxW/max(1,#r3vPreview11.bmp_width),#previewBoxH/max(1,#r3vPreview11.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[11]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(11,#r3vCacheCount)"
+                                w="#r3vPreview11.bmp_width*min(#previewBoxW/max(1,#r3vPreview11.bmp_width),#previewBoxH/max(1,#r3vPreview11.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+11-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview12" align="center" alignV="center"
+                                h="#r3vPreview12.bmp_height*min(#previewBoxW/max(1,#r3vPreview12.bmp_width),#previewBoxH/max(1,#r3vPreview12.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[12]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(12,#r3vCacheCount)"
+                                w="#r3vPreview12.bmp_width*min(#previewBoxW/max(1,#r3vPreview12.bmp_width),#previewBoxH/max(1,#r3vPreview12.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+12-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview13" align="center" alignV="center"
+                                h="#r3vPreview13.bmp_height*min(#previewBoxW/max(1,#r3vPreview13.bmp_width),#previewBoxH/max(1,#r3vPreview13.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[13]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(13,#r3vCacheCount)"
+                                w="#r3vPreview13.bmp_width*min(#previewBoxW/max(1,#r3vPreview13.bmp_width),#previewBoxH/max(1,#r3vPreview13.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+13-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3vPreview14" align="center" alignV="center"
+                                h="#r3vPreview14.bmp_height*min(#previewBoxW/max(1,#r3vPreview14.bmp_width),#previewBoxH/max(1,#r3vPreview14.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3vReady,'r3vBitmap[14]','')" srcType="BitmapVar"
+                                visibility="#r3vReady*eqs(@r3vCachePackage,@r3Package)*lt(14,#r3vCacheCount)"
+                                w="#r3vPreview14.bmp_width*min(#previewBoxW/max(1,#r3vPreview14.bmp_width),#previewBoxH/max(1,#r3vPreview14.bmp_height))"
+                                x="#safeW/2+(#r3vCacheOffset+14-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r3nPreview0" align="center" alignV="center"
+                                h="#r3nPreview0.bmp_height*min(#previewBoxW/max(1,#r3nPreview0.bmp_width),#previewBoxH/max(1,#r3nPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r3nReady,'r3nBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r3nReady*eqs(@r3nCachePackage,@r3Package)*lt(0,#r3nCacheCount)*not(#r3vReady*eqs(@r3vCachePackage,@r3Package)*ge(#r3nCacheOffset,#r3vCacheOffset)*lt(#r3nCacheOffset,#r3vCacheOffset+#r3vCacheCount))*not(#r3lReady*eqs(@r3lCachePackage,@r3Package)*lt(0,#r3lCacheCount)*eq(#r3nCacheOffset,#r3lCacheOffset))"
+                                w="#r3nPreview0.bmp_width*min(#previewBoxW/max(1,#r3nPreview0.bmp_width),#previewBoxH/max(1,#r3nPreview0.bmp_height))"
+                                x="#safeW/2+(#r3nCacheOffset+0-#r3WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                        </Group>
+                    </Group>
+                    <Text align="center" color="#FFE4EEFF" size="#fontSize*0.7"
+                        textExp="#r3WidgetNumber+' / '+#r3WidgetCount" w="#safeW-12*#scale"
+                        x="#safeW/2" y="#rowH*0.82" />
+                    <Text align="center" color="#FFCBD9EF" size="#fontSize*0.7" text="预览加载中"
+                        visibility="not(#r3vReady)" x="#safeW/2" y="#rowH*0.42" />
+                </Group>
+                <Group name="row4" clip="false" h="#rowH"
+                    visibility="#r4Valid*ge(#r4AppIndex,#appIndex-2)*le(#r4AppIndex,#appIndex+2)"
+                    w="#safeW" y="#centerTop+(#r4AppIndex-#appIndex)*#rowH">
+                    <Rectangle fillColor="#FF171E29" h="#rowH-4*#scale" w="#safeW" />
+                    <Text align="center" color="#FFFFFFFF" size="#fontSize" textExp="@r4Name"
+                        w="#safeW-12*#scale" x="#safeW/2" y="4*#scale" />
+                    <Group name="horizontalViewport4" clip="true" h="#rowH" w="1080" x="-#safeX"
+                        y="0">
+                        <Group name="widgetTrack4"
+                            x="#safeX+ifelse(eq(#r4AppIndex,#appIndex),#dx*eq(#direction,1),0)">
+                            <Image name="r4lPreview0" align="center" alignV="center"
+                                h="#r4lPreview0.bmp_height*min(#previewBoxW/max(1,#r4lPreview0.bmp_width),#previewBoxH/max(1,#r4lPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4lReady,'r4lBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r4lReady*eqs(@r4lCachePackage,@r4Package)*lt(0,#r4lCacheCount)*not(#r4vReady*eqs(@r4vCachePackage,@r4Package)*ge(#r4lCacheOffset,#r4vCacheOffset)*lt(#r4lCacheOffset,#r4vCacheOffset+#r4vCacheCount))"
+                                w="#r4lPreview0.bmp_width*min(#previewBoxW/max(1,#r4lPreview0.bmp_width),#previewBoxH/max(1,#r4lPreview0.bmp_height))"
+                                x="#safeW/2+(#r4lCacheOffset+0-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview0" align="center" alignV="center"
+                                h="#r4vPreview0.bmp_height*min(#previewBoxW/max(1,#r4vPreview0.bmp_width),#previewBoxH/max(1,#r4vPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(0,#r4vCacheCount)"
+                                w="#r4vPreview0.bmp_width*min(#previewBoxW/max(1,#r4vPreview0.bmp_width),#previewBoxH/max(1,#r4vPreview0.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+0-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview1" align="center" alignV="center"
+                                h="#r4vPreview1.bmp_height*min(#previewBoxW/max(1,#r4vPreview1.bmp_width),#previewBoxH/max(1,#r4vPreview1.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[1]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(1,#r4vCacheCount)"
+                                w="#r4vPreview1.bmp_width*min(#previewBoxW/max(1,#r4vPreview1.bmp_width),#previewBoxH/max(1,#r4vPreview1.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+1-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview2" align="center" alignV="center"
+                                h="#r4vPreview2.bmp_height*min(#previewBoxW/max(1,#r4vPreview2.bmp_width),#previewBoxH/max(1,#r4vPreview2.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[2]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(2,#r4vCacheCount)"
+                                w="#r4vPreview2.bmp_width*min(#previewBoxW/max(1,#r4vPreview2.bmp_width),#previewBoxH/max(1,#r4vPreview2.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+2-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview3" align="center" alignV="center"
+                                h="#r4vPreview3.bmp_height*min(#previewBoxW/max(1,#r4vPreview3.bmp_width),#previewBoxH/max(1,#r4vPreview3.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[3]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(3,#r4vCacheCount)"
+                                w="#r4vPreview3.bmp_width*min(#previewBoxW/max(1,#r4vPreview3.bmp_width),#previewBoxH/max(1,#r4vPreview3.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+3-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview4" align="center" alignV="center"
+                                h="#r4vPreview4.bmp_height*min(#previewBoxW/max(1,#r4vPreview4.bmp_width),#previewBoxH/max(1,#r4vPreview4.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[4]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(4,#r4vCacheCount)"
+                                w="#r4vPreview4.bmp_width*min(#previewBoxW/max(1,#r4vPreview4.bmp_width),#previewBoxH/max(1,#r4vPreview4.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+4-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview5" align="center" alignV="center"
+                                h="#r4vPreview5.bmp_height*min(#previewBoxW/max(1,#r4vPreview5.bmp_width),#previewBoxH/max(1,#r4vPreview5.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[5]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(5,#r4vCacheCount)"
+                                w="#r4vPreview5.bmp_width*min(#previewBoxW/max(1,#r4vPreview5.bmp_width),#previewBoxH/max(1,#r4vPreview5.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+5-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview6" align="center" alignV="center"
+                                h="#r4vPreview6.bmp_height*min(#previewBoxW/max(1,#r4vPreview6.bmp_width),#previewBoxH/max(1,#r4vPreview6.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[6]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(6,#r4vCacheCount)"
+                                w="#r4vPreview6.bmp_width*min(#previewBoxW/max(1,#r4vPreview6.bmp_width),#previewBoxH/max(1,#r4vPreview6.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+6-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview7" align="center" alignV="center"
+                                h="#r4vPreview7.bmp_height*min(#previewBoxW/max(1,#r4vPreview7.bmp_width),#previewBoxH/max(1,#r4vPreview7.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[7]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(7,#r4vCacheCount)"
+                                w="#r4vPreview7.bmp_width*min(#previewBoxW/max(1,#r4vPreview7.bmp_width),#previewBoxH/max(1,#r4vPreview7.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+7-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview8" align="center" alignV="center"
+                                h="#r4vPreview8.bmp_height*min(#previewBoxW/max(1,#r4vPreview8.bmp_width),#previewBoxH/max(1,#r4vPreview8.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[8]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(8,#r4vCacheCount)"
+                                w="#r4vPreview8.bmp_width*min(#previewBoxW/max(1,#r4vPreview8.bmp_width),#previewBoxH/max(1,#r4vPreview8.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+8-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview9" align="center" alignV="center"
+                                h="#r4vPreview9.bmp_height*min(#previewBoxW/max(1,#r4vPreview9.bmp_width),#previewBoxH/max(1,#r4vPreview9.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[9]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(9,#r4vCacheCount)"
+                                w="#r4vPreview9.bmp_width*min(#previewBoxW/max(1,#r4vPreview9.bmp_width),#previewBoxH/max(1,#r4vPreview9.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+9-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview10" align="center" alignV="center"
+                                h="#r4vPreview10.bmp_height*min(#previewBoxW/max(1,#r4vPreview10.bmp_width),#previewBoxH/max(1,#r4vPreview10.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[10]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(10,#r4vCacheCount)"
+                                w="#r4vPreview10.bmp_width*min(#previewBoxW/max(1,#r4vPreview10.bmp_width),#previewBoxH/max(1,#r4vPreview10.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+10-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview11" align="center" alignV="center"
+                                h="#r4vPreview11.bmp_height*min(#previewBoxW/max(1,#r4vPreview11.bmp_width),#previewBoxH/max(1,#r4vPreview11.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[11]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(11,#r4vCacheCount)"
+                                w="#r4vPreview11.bmp_width*min(#previewBoxW/max(1,#r4vPreview11.bmp_width),#previewBoxH/max(1,#r4vPreview11.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+11-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview12" align="center" alignV="center"
+                                h="#r4vPreview12.bmp_height*min(#previewBoxW/max(1,#r4vPreview12.bmp_width),#previewBoxH/max(1,#r4vPreview12.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[12]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(12,#r4vCacheCount)"
+                                w="#r4vPreview12.bmp_width*min(#previewBoxW/max(1,#r4vPreview12.bmp_width),#previewBoxH/max(1,#r4vPreview12.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+12-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview13" align="center" alignV="center"
+                                h="#r4vPreview13.bmp_height*min(#previewBoxW/max(1,#r4vPreview13.bmp_width),#previewBoxH/max(1,#r4vPreview13.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[13]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(13,#r4vCacheCount)"
+                                w="#r4vPreview13.bmp_width*min(#previewBoxW/max(1,#r4vPreview13.bmp_width),#previewBoxH/max(1,#r4vPreview13.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+13-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4vPreview14" align="center" alignV="center"
+                                h="#r4vPreview14.bmp_height*min(#previewBoxW/max(1,#r4vPreview14.bmp_width),#previewBoxH/max(1,#r4vPreview14.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4vReady,'r4vBitmap[14]','')" srcType="BitmapVar"
+                                visibility="#r4vReady*eqs(@r4vCachePackage,@r4Package)*lt(14,#r4vCacheCount)"
+                                w="#r4vPreview14.bmp_width*min(#previewBoxW/max(1,#r4vPreview14.bmp_width),#previewBoxH/max(1,#r4vPreview14.bmp_height))"
+                                x="#safeW/2+(#r4vCacheOffset+14-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                            <Image name="r4nPreview0" align="center" alignV="center"
+                                h="#r4nPreview0.bmp_height*min(#previewBoxW/max(1,#r4nPreview0.bmp_width),#previewBoxH/max(1,#r4nPreview0.bmp_height))"
+                                retainWhenInvisible="false"
+                                srcExp="ifelse(#r4nReady,'r4nBitmap[0]','')" srcType="BitmapVar"
+                                visibility="#r4nReady*eqs(@r4nCachePackage,@r4Package)*lt(0,#r4nCacheCount)*not(#r4vReady*eqs(@r4vCachePackage,@r4Package)*ge(#r4nCacheOffset,#r4vCacheOffset)*lt(#r4nCacheOffset,#r4vCacheOffset+#r4vCacheCount))*not(#r4lReady*eqs(@r4lCachePackage,@r4Package)*lt(0,#r4lCacheCount)*eq(#r4nCacheOffset,#r4lCacheOffset))"
+                                w="#r4nPreview0.bmp_width*min(#previewBoxW/max(1,#r4nPreview0.bmp_width),#previewBoxH/max(1,#r4nPreview0.bmp_height))"
+                                x="#safeW/2+(#r4nCacheOffset+0-#r4WidgetIndex)*#stride"
+                                y="#previewCenterY" />
+                        </Group>
+                    </Group>
+                    <Text align="center" color="#FFE4EEFF" size="#fontSize*0.7"
+                        textExp="#r4WidgetNumber+' / '+#r4WidgetCount" w="#safeW-12*#scale"
+                        x="#safeW/2" y="#rowH*0.82" />
+                    <Text align="center" color="#FFCBD9EF" size="#fontSize*0.7" text="预览加载中"
+                        visibility="not(#r4vReady)" x="#safeW/2" y="#rowH*0.42" />
+                </Group>
+            </Group>
+        </Group>
+        <Text align="center" color="#FFBECCE0" size="#fontSize*0.65"
+            textExp="ifelse(not(eqs(@apps.error,'')),'目录错误：'+@apps.error,ifelse(eq(#totalApps,0),'没有可用的小组件应用','上下应用 · 左右小组件 · 双击中间确认'))"
+            x="#safeW/2" y="#safeH-#fontSize*0.7" />
+        <Button name="gesture" h="#safeH" interceptTouch="true" w="#safeW" x="0" y="0">
+            <Triggers>
+                <Trigger action="down">
+                    <FunctionCommand target="beginGesture" />
+                </Trigger>
+                <Trigger action="double">
+                    <FunctionCommand target="armDouble" />
+                </Trigger>
+                <Trigger action="move">
+                    <FunctionCommand target="moveGesture" />
+                </Trigger>
+                <Trigger action="up">
+                    <FunctionCommand target="releaseGesture" />
+                </Trigger>
+                <Trigger action="cancel">
+                    <FunctionCommand target="cancelGesture" />
+                </Trigger>
+            </Triggers>
+        </Button>
+    </Group>
+    <Group name="configStatus" clip="true" h="#safeH" visibility="#displayReady*not(#rw_ready)"
+        w="#safeW" x="#safeX" y="#safeY">
+        <Rectangle fillColor="#FF10141C" h="#safeH" w="#safeW" />
+        <Text align="center" color="#FFCBD9EF" size="#fontSize" text="等待卡片配置就绪" x="#safeW/2"
+            y="#safeH*0.40" />
+        <Text align="center" color="#FFFFA6A6" size="#fontSize*0.8" textExp="@rw_error"
+            w="#safeW*0.92" x="#safeW/2" y="#safeH*0.50" />
+    </Group>
+    <RearAppWidget name="chosenWidget" h="#safeH" keyExp="@rw_instance" providerExp="@rw_provider"
+        userRequestExp="@rw_user_request" visibility="#rw_ready*#rw_selected*#displayReady"
+        w="#safeW" x="#safeX" y="#safeY" />
+</Screen>

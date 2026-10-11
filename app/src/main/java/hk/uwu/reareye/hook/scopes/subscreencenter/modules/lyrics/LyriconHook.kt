@@ -23,6 +23,7 @@ import hk.uwu.reareye.ui.config.LyricProvider
 import hk.uwu.roxyhook.PackageScope
 import hk.uwu.roxyhook.RoxyHooker
 import hk.uwu.roxyhook.android.lifecycle.lifecycle
+import hk.uwu.roxyhook.android.lifecycle.withAppContext
 import io.github.proify.lyricon.central.BridgeCentral
 import io.github.proify.lyricon.lyric.model.Song
 import io.github.proify.lyricon.subscriber.ActivePlayerListener
@@ -71,6 +72,8 @@ class LyriconHook : RoxyHooker() {
     private val managedElementStates =
         Collections.synchronizedMap(WeakHashMap<Any, ManagedElementState>())
 
+    private var lyricServicesLifecycle: AutoCloseable? = null
+
     @Volatile
     var monitor: LyriconSubscriber? = null
 
@@ -83,7 +86,13 @@ class LyriconHook : RoxyHooker() {
         }
     }
 
+    private fun freezeLyricServicesInitialization() {
+        lyricServicesLifecycle?.close()
+    }
+
     private fun releaseForReload(): Boolean {
+        // Wait for in-flight registration and freeze replay before releasing either provider.
+        freezeLyricServicesInitialization()
         var success = true
         monitor?.let { subscriber ->
             var subscriberSuccess = true
@@ -213,11 +222,10 @@ class LyriconHook : RoxyHooker() {
         }
 
         loadApp("com.xiaomi.subscreencenter") {
-            this.lifecycle {
-                // Hot reload restores the live Application attach event into the new runtime.
-                // Application.onCreate is not synthesized across module generations.
-                onAttach(replay = true) {
-                    val context = hookAppContext ?: this.context
+            // The existing helper waits for cold onCreate and replays ready attach on reload.
+            lyricServicesLifecycle = runtime.manage(
+                this.withAppContext {
+                    val context = this
                     when (LyricProvider.fromValue(
                         hookPrefs.getInt(
                             ConfigKeys.LYRIC_PROVIDER,
@@ -239,14 +247,21 @@ class LyriconHook : RoxyHooker() {
                         LyricProvider.SUPER_LYRIC -> {
                             if (!SuperLyricHelper.isAvailable()) {
                                 YLog.warn("SuperLyric is not available, it must be exists or higher than version 3.1")
-                                return@onAttach
+                                return@withAppContext
                             }
                             superLyricStub = object : ISuperLyricReceiver.Stub() {
                                 override fun onStop(publisher: String, data: SuperLyricData) {
+                                    mainScope.launch {
+                                        elements.forEach { element ->
+                                            if (stateOf(element).singleLinePublisher == publisher) {
+                                                releaseSingleLineLyric(element)
+                                            }
+                                        }
+                                    }
                                 }
 
                                 override fun onLyric(publisher: String, data: SuperLyricData) {
-                                    scope.launch {
+                                    mainScope.launch {
                                         runCatching {
                                             if (hookPrefs.getBoolean(
                                                     ConfigKeys.MORE_DEBUG,
@@ -282,7 +297,20 @@ class LyriconHook : RoxyHooker() {
                                                 }
 
                                                 if (lyric.isNotEmpty()) {
-                                                    updateFallbackLyric(lyric)
+                                                    elements.forEach { element ->
+                                                        val state = stateOf(element)
+                                                        state.singleLinePublisher = publisher
+                                                        state.singleLineMetadata =
+                                                            element.asResolver()
+                                                                .firstField { name = "mMetadata" }
+                                                                .get<MediaMetadata>()
+                                                        state.tempLrc = null
+                                                        element.asResolver().firstField {
+                                                            name = "mLyric"
+                                                        }.set(null)
+                                                        state.tempLyricLine = lyric
+                                                        updateFallbackLine(element, lyric)
+                                                    }
                                                 }
                                             }
                                         }.onFailure {
@@ -296,8 +324,10 @@ class LyriconHook : RoxyHooker() {
                         }
                     }
                 }
-
+            )
+            runtime.manage(this.lifecycle {
                 onTerminate {
+                    freezeLyricServicesInitialization()
                     monitor?.also {
                         it.unregister()
                         it.destroy()
@@ -307,7 +337,7 @@ class LyriconHook : RoxyHooker() {
                     }
                     YLog.debug("Terminated music lyric services")
                 }
-            }
+            })
 
             val versionCode = resolveHookPackageVersionCode(
                 hookSystemContext,
@@ -342,6 +372,7 @@ class LyriconHook : RoxyHooker() {
                 name = "resetLyric"
             }.hook {
                 replaceUnit {
+                    if (stateOf(instance!!).singleLinePublisher != null) return@replaceUnit
                     val iRef = instance!!.asResolver()
                     val mMetadata = iRef.firstField { name = "mMetadata" }.get<MediaMetadata>()
                     if (mMetadata != null && stateOf(instance!!).oldMediaId == mMetadata.description.mediaId) {
@@ -351,6 +382,15 @@ class LyriconHook : RoxyHooker() {
                         clearManagedLyricState(instance!!)
                         callOriginal()
                     }
+                }
+            }
+
+            ref.firstMethod {
+                name = "handleLyric"
+                parameters(MediaMetadata::class.java, Boolean::class.java)
+            }.hook {
+                replaceUnit {
+                    if (stateOf(instance!!).singleLinePublisher == null) callOriginal(*args)
                 }
             }
 
@@ -431,6 +471,16 @@ class LyriconHook : RoxyHooker() {
 
             val musicControlListenerClz =
                 "com.miui.maml.elements.MusicControlScreenElement$1".toClass().resolve()
+            listOf("onClientChange", "onSessionDestroyed").forEach { methodName ->
+                musicControlListenerClz.firstMethod { name = methodName }.hook {
+                    before {
+                        val element = instance!!.asResolver().firstField {
+                            name = "this$0"
+                        }.get() ?: return@before
+                        releaseSingleLineLyric(element)
+                    }
+                }
+            }
             musicControlListenerClz.firstMethod {
                 name = "onClientMetadataUpdate"
                 returnType = Void.TYPE
@@ -446,6 +496,19 @@ class LyriconHook : RoxyHooker() {
                         return@replaceUnit
                     }
                     elements.addIfAbsent(i)
+                    val state = stateOf(i)
+                    if (state.singleLinePublisher != null) {
+                        val previous = state.singleLineMetadata
+                        if (metadata == null || (previous != null && !isSameSingleLineTrack(
+                                previous,
+                                metadata
+                            ))
+                        ) {
+                            releaseSingleLineLyric(i)
+                        } else {
+                            state.singleLineMetadata = metadata
+                        }
+                    }
                     val moreDebug = hookPrefs.getBoolean(ConfigKeys.MORE_DEBUG, false)
                     val removeNativeLyric =
                         hookPrefs.getBoolean(ConfigKeys.HOOK_REMOVE_NATIVE_LYRIC_SUPPORT, false)
@@ -463,9 +526,17 @@ class LyriconHook : RoxyHooker() {
                     ) {
                         val builder = MediaMetadata.Builder(metadata)
                         if (moreDebug) {
-                            YLog.debug("Native lyric: ${metadata.getString(XIAOMI_LYRIC_METADATA)}")
+                            YLog.debug("Native lyric [0]: ${metadata.getString(XIAOMI_LYRIC_METADATA)}")
+                            YLog.debug(
+                                "Native lyric [1]: ${
+                                    metadata.getString(
+                                        XIAOMI_LYRIC_DESCRIPTION_METADATA
+                                    )
+                                }"
+                            )
                         }
                         builder.putString(XIAOMI_LYRIC_METADATA, null)
+                        builder.putString(XIAOMI_LYRIC_DESCRIPTION_METADATA, null)
                         if (moreDebug) {
                             YLog.debug("Force removed native lyric data")
                         }
@@ -502,8 +573,10 @@ class LyriconHook : RoxyHooker() {
                     val i = instance!!.asResolver().firstField {
                         name = "this$0"
                     }.get() ?: return@after
-                    scope.launch {
-                        checkLyricState(metadata, i)
+                    mainScope.launch {
+                        if (stateOf(i).singleLinePublisher == null) {
+                            checkLyricState(metadata, i)
+                        }
                     }
                 }
             }
@@ -687,6 +760,35 @@ class LyriconHook : RoxyHooker() {
         }
     }
 
+    private fun PackageScope.isSameSingleLineTrack(
+        previous: MediaMetadata,
+        next: MediaMetadata
+    ): Boolean {
+        val previousId = previous.description.mediaId
+        val nextId = next.description.mediaId
+        if (!previousId.isNullOrEmpty() && !nextId.isNullOrEmpty()) {
+            return previousId == nextId
+        }
+        return resolveTrackTitle(previous) == resolveTrackTitle(next) &&
+                previous.getString(MediaMetadata.METADATA_KEY_ARTIST) == next.getString(
+            MediaMetadata.METADATA_KEY_ARTIST
+        ) &&
+                previous.getString(MediaMetadata.METADATA_KEY_ALBUM) == next.getString(MediaMetadata.METADATA_KEY_ALBUM)
+    }
+
+    private fun PackageScope.releaseSingleLineLyric(element: Any) {
+        val state = stateOf(element)
+        if (state.singleLinePublisher == null) return
+        state.singleLinePublisher = null
+        state.singleLineMetadata = null
+        state.tempLyricLine = null
+        state.oldMediaId = null
+        val ref = element.asResolver()
+        ref.firstField { name = "mLastRawLyric" }.set(null)
+        setIndexedVariable(ref.firstField { name = "mLyricCurrentVar" }.get(), null)
+        ref.firstMethod { name = "requestUpdate"; superclass() }.invoke()
+    }
+
     private fun PackageScope.updateFallbackLyric(text: String) {
         elements.forEach { element ->
             stateOf(element).tempLyricLine = text
@@ -705,6 +807,7 @@ class LyriconHook : RoxyHooker() {
             name = "set"
             parameters(Any::class.java)
         }.invoke(text)
+        ref.firstMethod { name = "requestUpdate"; superclass() }.invoke()
     }
 
     private fun PackageScope.updateLyric(
@@ -1164,6 +1267,9 @@ class LyriconHook : RoxyHooker() {
         var pendingSnapshot: PendingLyricSnapshot? = null,
         var preTicker: Any? = null,
     ) {
+        var singleLinePublisher: String? = null
+        var singleLineMetadata: MediaMetadata? = null
+
         override fun equals(other: Any?): Boolean {
             if (this === other) return true
             if (javaClass != other?.javaClass) return false
@@ -1238,6 +1344,8 @@ class LyriconHook : RoxyHooker() {
         private const val METADATA_CUSTOM_TITLE = "android.media.metadata.CUSTOM_FIELD_TITLE"
         private const val METADATA_TITLE = "android.media.metadata.TITLE"
         private const val XIAOMI_LYRIC_METADATA = "android.media.metadata.LYRIC"
+        private const val XIAOMI_LYRIC_DESCRIPTION_METADATA =
+            "android.media.metadata.DISPLAY_DESCRIPTION"
         private const val DURATION_METADATA = "android.media.metadata.DURATION"
         private const val MIN_PROGRESS_INTERVAL_MS = 100L
         private const val LAST_LINE_DURATION_MS = 8000L

@@ -299,7 +299,7 @@ fun CardManagerScreen(
         draftTitle = ""
         draftPackageName = "hk.uwu.reareye"
         draftBusiness = ""
-        draftPriorityText = "500"
+        draftPriorityText = "600"
         draftAutomaticPriority = true
         draftSticky = true
         draftOneConfigJson = null

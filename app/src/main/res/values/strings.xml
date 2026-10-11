@@ -302,7 +302,7 @@
     <string name="rear_widget_template_file">Template File Path</string>
     <string name="rear_widget_default_priority">Manual priority (larger values show first)</string>
     <string name="rear_widget_priority_mode_auto">Automatically manage priority</string>
-    <string name="rear_widget_priority_auto_desc">Priorities start at 500 at the bottom and increase by 1 towards the top</string>
+    <string name="rear_widget_priority_auto_desc">Priorities start at 600 at the bottom and increase by 1 towards the top</string>
     <string name="rear_widget_priority_manual_desc">Keep this value until the next drag reorder; larger values show first</string>
     <string name="rear_widget_pick_file">Select File</string>
     <string name="rear_widget_card_title">Card Title</string>

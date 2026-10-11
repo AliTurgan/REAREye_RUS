@@ -2,15 +2,37 @@ package hk.uwu.reareye.hook.scopes.system.modules
 
 import com.highcapable.kavaref.KavaRef.Companion.asResolver
 import com.highcapable.kavaref.KavaRef.Companion.resolve
+import com.highcapable.kavaref.extension.makeAccessible
 import hk.uwu.reareye.hook.support.YLog
 import hk.uwu.reareye.hook.support.hookPrefs
 import hk.uwu.reareye.ui.config.ConfigKeys
+import hk.uwu.roxyhook.HotReloadPolicy
 import hk.uwu.roxyhook.PackageScope
 import hk.uwu.roxyhook.RoxyHooker
 
 class RearScreenActivityWhitelistModule : RoxyHooker() {
     override fun PackageScope.onHook() {
         loadSystem {
+            // MIUI records a short-lived target-package grant only for trusted PendingIntent
+            // senders. The rear-screen widget host must follow the same path as the launcher;
+            // otherwise a widget broadcast has an AOSP BAL token but MIUI still rejects it.
+            // Keep MIUI's target resolution, wake checks and native 5-second expiry unchanged.
+            runCatching {
+                val senderField = "com.android.server.am.PendingIntentRecordImpl".toClass()
+                    .getDeclaredField("sIgnorePackages").apply { makeAccessible() }
+
+                @Suppress("UNCHECKED_CAST")
+                val senders = senderField.get(null) as MutableSet<String>
+                val host = "com.xiaomi.subscreencenter"
+                val added = synchronized(senders) { senders.add(host) }
+                if (added) runtime.onClose { synchronized(senders) { senders.remove(host) } }
+                YLog.info("Rear Widget host registered for MIUI temporary PendingIntent launch grants")
+            }.onFailure {
+                YLog.warn(
+                    "Rear Widget temporary PendingIntent launch grants unavailable",
+                    it
+                )
+            }
             val asiRef = "com.android.server.wm.ActivityStarterImpl".toClass().resolve()
             val activityInfoClz = "android.content.pm.ActivityInfo".toClass()
             val activityRecordClz = "com.android.server.wm.ActivityRecord".toClass()
@@ -19,6 +41,7 @@ class RearScreenActivityWhitelistModule : RoxyHooker() {
                 parameters(activityInfoClz)
                 returnType = Boolean::class.java
             }?.hook {
+                hotReloadPolicy = HotReloadPolicy.KEEP
                 before {
                     if (!hookPrefs.getBoolean(
                             ConfigKeys.HOOK_ACTIVITIES_WHITELIST,
@@ -47,6 +70,7 @@ class RearScreenActivityWhitelistModule : RoxyHooker() {
                 parameters(activityRecordClz)
                 returnType = Boolean::class.java
             }?.hook {
+                hotReloadPolicy = HotReloadPolicy.KEEP
                 before {
                     if (!hookPrefs.getBoolean(
                             ConfigKeys.HOOK_ACTIVITIES_WHITELIST,
@@ -77,6 +101,7 @@ class RearScreenActivityWhitelistModule : RoxyHooker() {
                 name = "isAllowedToStartOnRearDisplay"
                 returnType = Boolean::class.java
             }.hook {
+                hotReloadPolicy = HotReloadPolicy.KEEP
                 after {
                     if (hookPrefs.getBoolean(ConfigKeys.ALLOW_ALL_ACTIVITIES, false)) {
                         result = true
@@ -106,6 +131,7 @@ class RearScreenActivityWhitelistModule : RoxyHooker() {
             asiRef.firstMethod {
                 name = "handlerTransitionFinished"
             }.hook {
+                hotReloadPolicy = HotReloadPolicy.KEEP
                 before {
                     if (hookPrefs.getBoolean(ConfigKeys.HOOK_SKIP_LOCK_BACK_HOME, false)) {
                         val arg = args(3)

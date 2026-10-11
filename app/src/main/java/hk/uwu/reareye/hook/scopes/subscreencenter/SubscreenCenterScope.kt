@@ -11,6 +11,9 @@ import hk.uwu.reareye.hook.scopes.subscreencenter.modules.VideoLoopModule
 import hk.uwu.reareye.hook.scopes.subscreencenter.modules.VideoProgressResumeModule
 import hk.uwu.reareye.hook.scopes.subscreencenter.modules.VideoVolumeHook
 import hk.uwu.reareye.hook.scopes.subscreencenter.modules.lyrics.LyriconHook
+import hk.uwu.reareye.hook.scopes.subscreencenter.modules.maml.MamlCardScopeHook
+import hk.uwu.reareye.hook.scopes.subscreencenter.modules.maml.MamlElementHook
+import hk.uwu.reareye.hook.scopes.subscreencenter.modules.maml.data.MamlVariableBinderHook
 import hk.uwu.reareye.hook.scopes.subscreencenter.modules.rearwidget.ExtraTimeTipHook
 import hk.uwu.reareye.hook.scopes.subscreencenter.modules.rearwidget.RearAppHook
 import hk.uwu.reareye.hook.scopes.subscreencenter.modules.rearwidget.RearWidgetHook
@@ -28,6 +31,9 @@ class SubscreenCenterScope : RoxyHooker(), Scope {
 
         val hookers = listOf(
             ForceAppWidgetEnabledHook(),
+            MamlCardScopeHook(),
+            MamlElementHook(),
+            MamlVariableBinderHook(),
             MusicControlWhitelistModule(),
             SubScreenBackHomeWhitelistModule(),
             UnlimitedSubscreenAppListHook(),

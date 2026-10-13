@@ -16,7 +16,8 @@ data class RearDisplayInsets(val left: Int, val top: Int, val right: Int, val bo
 data class RearDisplayGeometry(
     val width: Int,
     val height: Int,
-    val insets: RearDisplayInsets? = null
+    val insets: RearDisplayInsets? = null,
+    val densityDpi: Int = 0,
 )
 
 fun interface RearDisplayGeometryProvider {
@@ -56,7 +57,7 @@ class RearDisplayDataSource(context: Context, provider: RearDisplayGeometryProvi
                     it.safeInsetRight,
                     it.safeInsetBottom
                 )
-            })
+            }, metrics.densityDpi)
         }
     }
     private val subscriptions = linkedMapOf<Any, () -> Unit>()
@@ -191,7 +192,15 @@ class RearDisplayDataSource(context: Context, provider: RearDisplayGeometryProvi
         const val TAG = "RearDisplayBinder"
         const val FALLBACK_LEFT_PX = 296
         val schema = MamlDataSchema(
-            listOf("width", "height", "safeLeft", "safeTop", "safeRight", "safeBottom")
+            listOf(
+                "width",
+                "height",
+                "safeLeft",
+                "safeTop",
+                "safeRight",
+                "safeBottom",
+                "densityDpi"
+            )
                 .map { MamlDataField(it, MamlDataType.NUMBER) })
 
         fun definition() = MamlDataSourceDefinition(
@@ -216,6 +225,8 @@ class RearDisplayDataSource(context: Context, provider: RearDisplayGeometryProvi
                     mapOf(
                         "width" to width.toDouble(),
                         "height" to height.toDouble(),
+                        // 0 means unavailable for injected/legacy geometry; never substitute main-screen density.
+                        "densityDpi" to geometry.densityDpi.coerceAtLeast(0).toDouble(),
                         "safeLeft" to left.toDouble(),
                         "safeTop" to top.toDouble(),
                         "safeRight" to (width - right).toDouble(),

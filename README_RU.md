@@ -394,3 +394,5 @@ Gradle Wrapper.
 ## Лицензия
 
 См. [LICENSE](./LICENSE).
+
+### Перевод на русский язык: [@Alikabosh](https://github.com/AliTurgan)
